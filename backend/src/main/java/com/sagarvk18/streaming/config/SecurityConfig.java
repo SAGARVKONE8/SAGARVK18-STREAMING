@@ -60,12 +60,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        String allowedOriginsEnv = System.getenv("ALLOWED_ORIGINS");
-        if (allowedOriginsEnv != null && !allowedOriginsEnv.isEmpty()) {
-            config.setAllowedOriginPatterns(Arrays.asList(allowedOriginsEnv.split(",")));
-        } else {
-            config.setAllowedOriginPatterns(List.of("http://localhost:5173", "http://localhost:3000", "https://*.vercel.app"));
-        }
+        config.setAllowedOriginPatterns(List.of("*"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
