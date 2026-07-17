@@ -60,9 +60,9 @@ public class SecurityConfig {
         CorsConfiguration config = new CorsConfiguration();
         String allowedOriginsEnv = System.getenv("ALLOWED_ORIGINS");
         if (allowedOriginsEnv != null && !allowedOriginsEnv.isEmpty()) {
-            config.setAllowedOrigins(Arrays.asList(allowedOriginsEnv.split(",")));
+            config.setAllowedOriginPatterns(Arrays.asList(allowedOriginsEnv.split(",")));
         } else {
-            config.setAllowedOrigins(List.of("http://localhost:5173", "http://localhost:3000"));
+            config.setAllowedOriginPatterns(List.of("http://localhost:5173", "http://localhost:3000", "https://*.vercel.app"));
         }
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         config.setAllowedHeaders(List.of("*"));
