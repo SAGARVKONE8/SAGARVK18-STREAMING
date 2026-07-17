@@ -31,7 +31,14 @@ const LoginPage = () => {
       toast.success('Welcome back! 🎬')
       navigate('/select-profile')
     } catch (err) {
-      const msg = err.response?.data?.message || 'Invalid credentials. Please try again.'
+      let msg = 'Invalid credentials. Please try again.'
+      if (err.response) {
+        msg = err.response.data?.message || msg
+      } else if (err.request) {
+        msg = 'Connection error: Backend server is unreachable. Verify your Render backend is running and VITE_API_BASE_URL is correct.'
+      } else {
+        msg = err.message
+      }
       setError(msg)
       toast.error(msg)
     } finally {
