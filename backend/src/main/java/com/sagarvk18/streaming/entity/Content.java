@@ -32,6 +32,7 @@ public class Content {
     private Integer duration; // minutes
     private boolean isPremium;
     private Long views;
+    @Column(name = "cast_members")
     private String cast;
     private String director;
     private String ageRating;
