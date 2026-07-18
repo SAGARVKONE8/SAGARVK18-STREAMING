@@ -68,6 +68,7 @@ const FEATURES = [
 
 const FloatingPoster = ({ delay, duration, left, top, url }) => (
   <motion.div
+    className="floating-poster-responsive"
     initial={{ opacity: 0, y: 40 }}
     animate={{ opacity: 0.15, y: 0 }}
     transition={{ delay, duration: 0.8 }}
@@ -201,7 +202,7 @@ const LandingPage = () => {
             transition={{ duration: 0.7, delay: 0.15 }}
             style={{
               fontFamily: 'Outfit, sans-serif', fontWeight: 900,
-              fontSize: 'clamp(42px, 8vw, 90px)',
+              fontSize: 'clamp(32px, 7vw, 90px)',
               lineHeight: 1.05, margin: '0 0 20px',
               background: 'linear-gradient(135deg, #ffffff 0%, #e50914 50%, #f5a623 100%)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
@@ -241,11 +242,7 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.55 }}
             onSubmit={handleGetStarted}
-            style={{
-              display: 'flex', gap: '12px',
-              maxWidth: '520px', margin: '0 auto 32px',
-              flexWrap: 'wrap', justifyContent: 'center',
-            }}
+            className="responsive-cta-form"
           >
             <input
               type="email"

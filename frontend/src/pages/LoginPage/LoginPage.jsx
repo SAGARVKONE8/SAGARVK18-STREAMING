@@ -72,16 +72,7 @@ const LoginPage = () => {
         initial={{ opacity: 0, y: 40, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.55, ease: 'easeOut' }}
-        style={{
-          width: '100%', maxWidth: '440px',
-          background: 'rgba(18,18,30,0.85)',
-          backdropFilter: 'blur(28px)',
-          border: '1px solid rgba(255,255,255,0.1)',
-          borderRadius: '28px',
-          padding: '48px 40px',
-          boxShadow: '0 32px 80px rgba(0,0,0,0.6)',
-          position: 'relative', zIndex: 1,
-        }}
+        className="auth-card-responsive"
       >
         {/* Logo */}
         <Link to="/" style={{ textDecoration: 'none' }}>

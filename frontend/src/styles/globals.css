@@ -679,6 +679,228 @@ input, textarea, select { font-family: inherit; }
   .btn-lg { padding: 13px 24px; font-size: 15px; }
 }
 
+/* ---------- Responsive Helpers & Components ---------- */
+.floating-poster-responsive {
+  display: block;
+}
+@media (max-width: 1024px) {
+  .floating-poster-responsive {
+    display: none !important;
+  }
+}
+
+.responsive-cta-form {
+  display: flex;
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+@media (max-width: 480px) {
+  .responsive-cta-form {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .responsive-cta-form input {
+    width: 100% !important;
+    min-width: unset !important;
+  }
+  .responsive-cta-form button {
+    width: 100% !important;
+    justify-content: center;
+  }
+}
+
+.auth-card-responsive {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(18,18,30,0.85);
+  backdrop-filter: blur(28px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 28px;
+  padding: 48px 40px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 480px) {
+  .auth-card-responsive {
+    padding: 28px 20px !important;
+    border-radius: 20px !important;
+  }
+}
+
+.hero-banner-responsive {
+  position: relative;
+  width: 100%;
+  height: min(100vh, 850px);
+  min-height: 600px;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .hero-banner-responsive {
+    height: 58vh !important;
+    min-height: 380px !important;
+  }
+}
+
+.hero-buttons-container {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+@media (max-width: 480px) {
+  .hero-buttons-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .hero-buttons-container button {
+    width: 100% !important;
+    padding: 10px 20px !important;
+    font-size: 14px !important;
+  }
+}
+
+.detail-main-container {
+  display: flex;
+  gap: 36px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+@media (max-width: 768px) {
+  .detail-main-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+  .detail-main-container > div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .detail-main-container img {
+    margin: 0 auto;
+    width: 180px !important;
+    height: 270px !important;
+  }
+}
+
+.detail-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+@media (max-width: 768px) {
+  .detail-meta-row {
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+.detail-genres-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+  .detail-genres-row {
+    justify-content: center;
+  }
+}
+
+.detail-content-wrapper {
+  padding: 0 4vw 60px;
+  margin-top: -120px;
+  position: relative;
+  z-index: 10;
+}
+@media (max-width: 768px) {
+  .detail-content-wrapper {
+    margin-top: -40px !important;
+  }
+}
+
+.detail-actions-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+@media (max-width: 560px) {
+  .detail-actions-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .detail-actions-row button {
+    width: 100% !important;
+  }
+}
+
+.tabs-scrollable {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 36px;
+  background: #1a1a2e;
+  border-radius: 16px;
+  padding: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  width: 100%;
+}
+.tabs-scrollable::-webkit-scrollbar {
+  display: none;
+}
+.tabs-scrollable button {
+  flex: 1;
+  min-width: 100px;
+}
+
+.admin-header-responsive {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+@media (max-width: 560px) {
+  .admin-header-responsive {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+}
+
+.admin-table-container {
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  scrollbar-width: thin;
+}
+
+.chips-scrollable {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 36px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  width: 100%;
+  padding-bottom: 4px;
+}
+.chips-scrollable::-webkit-scrollbar {
+  display: none;
+}
+.chips-scrollable button {
+  flex-shrink: 0;
+}
+
 /* ---------- Selection ---------- */
 ::selection {
   background: rgba(229, 9, 20, 0.3);

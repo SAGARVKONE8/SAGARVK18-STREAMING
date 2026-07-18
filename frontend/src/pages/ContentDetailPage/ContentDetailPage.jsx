@@ -189,8 +189,8 @@ const ContentDetailPage = () => {
       </div>
 
       {/* ── Main content ── */}
-      <div style={{ padding: '0 4vw 60px', marginTop: '-120px', position: 'relative', zIndex: 10 }}>
-        <div style={{ display: 'flex', gap: '36px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+      <div className="detail-content-wrapper">
+        <div className="detail-main-container">
           {/* Poster */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -238,7 +238,7 @@ const ContentDetailPage = () => {
             }}>{content.title}</h1>
 
             {/* Meta row */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', marginBottom: '16px' }}>
+            <div className="detail-meta-row">
               <span style={{ display: 'flex', alignItems: 'center', gap: '5px', color: '#f5a623', fontWeight: 700, fontSize: '15px' }}>
                 <FiStar size={15} fill="#f5a623" /> {avgRating}
               </span>
@@ -276,7 +276,7 @@ const ContentDetailPage = () => {
             </div>
 
             {/* Genres */}
-            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '20px' }}>
+            <div className="detail-genres-row">
               {(content.genres || []).map((g) => (
               <span key={g.id || g.name || g} style={{
                 background: 'rgba(229,9,20,0.15)',
@@ -309,7 +309,7 @@ const ContentDetailPage = () => {
             )}
 
             {/* Action buttons */}
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '32px' }}>
+            <div className="detail-actions-row">
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: '0 0 28px rgba(229,9,20,0.5)' }}
                 whileTap={{ scale: 0.95 }}

@@ -184,11 +184,7 @@ const AccountPage = () => {
         >Account Settings</motion.h1>
 
         {/* Tabs */}
-        <div style={{
-          display: 'flex', gap: '4px', marginBottom: '36px',
-          background: '#1a1a2e', borderRadius: '16px', padding: '6px',
-          flexWrap: 'wrap',
-        }}>
+        <div className="tabs-scrollable">
           {TABS.map((t) => (
             <button
               key={t}

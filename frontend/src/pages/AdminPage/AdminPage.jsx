@@ -137,7 +137,7 @@ export default function AdminPage() {
   return (
     <div style={{ minHeight: '100vh', background: '#0a0a0f', color: '#fff' }}>
       <Navbar />
-      <div style={{ paddingTop: '80px', padding: '80px 40px 40px' }}>
+      <div style={{ padding: '80px 4vw 40px' }}>
 
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}
@@ -204,7 +204,7 @@ export default function AdminPage() {
               </button>
             </div>
 
-            <div style={{ overflowX: 'auto', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="admin-table-container">
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
                   <tr style={{ background: 'rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
@@ -271,7 +271,7 @@ export default function AdminPage() {
         {activeTab === 'users' && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <h2 style={{ fontFamily: 'Outfit', fontWeight: 700, marginBottom: '16px' }}>User Management ({users.length})</h2>
-            <div style={{ overflowX: 'auto', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="admin-table-container">
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
                   <tr style={{ background: 'rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
@@ -339,7 +339,7 @@ export default function AdminPage() {
               </div>
 
               <form onSubmit={handleSubmit}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div className="grid-2" style={{ gap: '16px' }}>
                   {[
                     { label: 'Title *', key: 'title', type: 'text', required: true },
                     { label: 'Director', key: 'director', type: 'text' },

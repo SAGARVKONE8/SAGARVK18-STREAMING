@@ -66,12 +66,7 @@ const HeroBanner = ({ contents = [] }) => {
     `https://picsum.photos/seed/${content.id}/1920/1080`
 
   return (
-    <div style={{
-      position: 'relative', width: '100%',
-      height: 'min(100vh, 850px)',
-      minHeight: '600px',
-      overflow: 'hidden',
-    }}>
+    <div className="hero-banner-responsive">
       {/* ── Backdrop image ── */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -222,7 +217,7 @@ const HeroBanner = ({ contents = [] }) => {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}
+            className="hero-buttons-container"
           >
             {/* Play */}
             <motion.button
