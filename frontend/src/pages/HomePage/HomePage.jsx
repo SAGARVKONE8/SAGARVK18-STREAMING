@@ -53,14 +53,12 @@ const HomePage = () => {
 
       {/* Hero Banner */}
       {loading ? (
-        <div
-          className="hero-banner-responsive"
-          style={{
-            background: 'linear-gradient(90deg, #1a1a2e 0%, #242438 50%, #1a1a2e 100%)',
-            backgroundSize: '200% 100%',
-            animation: 'shimmer 1.6s infinite',
-          }}
-        >
+        <div style={{
+          width: '100%', height: 'min(100vh, 850px)', minHeight: '600px',
+          background: 'linear-gradient(90deg, #1a1a2e 0%, #242438 50%, #1a1a2e 100%)',
+          backgroundSize: '200% 100%',
+          animation: 'shimmer 1.6s infinite',
+        }}>
           <style>{'@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }'}</style>
         </div>
       ) : (

@@ -183,7 +183,9 @@ const SearchPage = () => {
 
         {/* ── Genre chips ── */}
         {genres.length > 0 && (
-          <div className="chips-scrollable">
+          <div style={{
+            display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '36px',
+          }}>
             <button
               onClick={() => setGenre('')}
               style={{

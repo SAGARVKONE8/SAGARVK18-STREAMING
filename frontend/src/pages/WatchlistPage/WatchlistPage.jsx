@@ -91,7 +91,7 @@ const WatchlistPage = () => {
 
           {/* Sort options */}
           {items.length > 0 && (
-            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '8px' }}>
               {SORT_OPTIONS.map((o) => (
                 <button
                   key={o.value}

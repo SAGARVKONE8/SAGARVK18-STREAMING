@@ -884,23 +884,6 @@ input, textarea, select { font-family: inherit; }
   scrollbar-width: thin;
 }
 
-.chips-scrollable {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 36px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  width: 100%;
-  padding-bottom: 4px;
-}
-.chips-scrollable::-webkit-scrollbar {
-  display: none;
-}
-.chips-scrollable button {
-  flex-shrink: 0;
-}
-
 /* ---------- Selection ---------- */
 ::selection {
   background: rgba(229, 9, 20, 0.3);
