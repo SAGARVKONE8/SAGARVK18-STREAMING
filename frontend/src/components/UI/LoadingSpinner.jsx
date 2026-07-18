@@ -52,18 +52,27 @@ const LoadingSpinner = ({ fullScreen = true, size = 'large' }) => {
         <motion.div
           animate={{ opacity: [0.4, 1, 0.4] }}
           transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}
+          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
         >
-          <img
-            src="/logo.jpg"
-            alt="SAGARVK18"
-            style={{
-              height: '38px',
-              borderRadius: '6px',
-              objectFit: 'contain',
-              opacity: 0.8,
-            }}
-          />
+          <img src="/logo.png" alt="Logo" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
+            <span style={{
+              fontFamily: 'Outfit, sans-serif',
+              fontWeight: 900,
+              fontSize: '20px',
+              background: 'linear-gradient(135deg, #e50914, #f5a623)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              letterSpacing: '2px',
+            }}>SAGARVK18</span>
+            <span style={{
+              fontFamily: 'Outfit, sans-serif',
+              fontWeight: 300,
+              fontSize: '10px',
+              color: '#666680',
+              letterSpacing: '4px',
+            }}>STREAMING</span>
+          </div>
         </motion.div>
       )}
     </div>
@@ -74,7 +83,7 @@ const LoadingSpinner = ({ fullScreen = true, size = 'large' }) => {
   return (
     <div style={{
       minHeight: '100vh',
-      background: '#050505',
+      background: '#0a0a0f',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',

@@ -99,17 +99,27 @@ const Navbar = () => {
         <Link to="/home" style={{ textDecoration: 'none' }}>
           <motion.div
             whileHover={{ scale: 1.04 }}
-            style={{ display: 'flex', alignItems: 'center' }}
+            style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
           >
-            <img
-              src="/logo.jpg"
-              alt="SAGARVK18"
-              style={{
-                height: '42px',
-                borderRadius: '8px',
-                objectFit: 'contain',
-              }}
-            />
+            <img src="/logo.png" alt="Logo" style={{ height: '32px', width: 'auto', objectFit: 'contain' }} />
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '5px' }}>
+              <span style={{
+                fontFamily: 'Outfit, sans-serif',
+                fontWeight: 900,
+                fontSize:   '22px',
+                background: 'linear-gradient(135deg, #e50914, #f5a623)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                letterSpacing: '1px',
+              }}>SAGARVK18</span>
+              <span style={{
+                fontFamily: 'Outfit, sans-serif',
+                fontWeight: 300,
+                fontSize:   '11px',
+                color:      '#ffffffaa',
+                letterSpacing: '3px',
+              }}>STREAMING</span>
+            </div>
           </motion.div>
         </Link>
 

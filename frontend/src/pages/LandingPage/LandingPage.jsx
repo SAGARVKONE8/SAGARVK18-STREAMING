@@ -127,15 +127,15 @@ const LandingPage = () => {
         borderTop: '1px solid rgba(255,255,255,0.08)',
         boxShadow: '0 8px 40px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)',
       }}>
-        <img
-          src="/logo.jpg"
-          alt="SAGARVK18"
-          style={{
-            height: '42px',
-            borderRadius: '8px',
-            objectFit: 'contain',
-          }}
-        />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <img src="/logo.png" alt="Logo" style={{ height: '32px', width: 'auto', objectFit: 'contain' }} />
+          <div style={{
+            fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: '22px',
+            background: 'linear-gradient(135deg, #e50914, #f5a623)',
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+            letterSpacing: '1px',
+          }}>SAGARVK18</div>
+        </div>
         <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
           <Link to="/login" style={{
             fontFamily: 'Outfit, sans-serif', fontWeight: 500,
@@ -204,23 +204,20 @@ const LandingPage = () => {
             Now Streaming — HD & 4K
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.75, delay: 0.15 }}
-            style={{ marginBottom: '28px', display: 'flex', justifyContent: 'center' }}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            style={{
+              fontFamily: 'Outfit, sans-serif', fontWeight: 900,
+              fontSize: 'clamp(32px, 7vw, 90px)',
+              lineHeight: 1.05, margin: '0 0 20px',
+              background: 'linear-gradient(135deg, #ffffff 0%, #e50914 50%, #f5a623 100%)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+            }}
           >
-            <img
-              src="/logo.jpg"
-              alt="SAGARVK18"
-              style={{
-                width: 'clamp(180px, 35vw, 280px)',
-                borderRadius: '24px',
-                boxShadow: '0 12px 40px rgba(229, 9, 20, 0.25)',
-                border: '1px solid rgba(255,255,255,0.08)',
-              }}
-            />
-          </motion.div>
+            SAGARVK18
+          </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -526,16 +523,15 @@ const LandingPage = () => {
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '24px' }}>
             <div>
-              <img
-                src="/logo.jpg"
-                alt="SAGARVK18"
-                style={{
-                  height: '38px',
-                  borderRadius: '6px',
-                  objectFit: 'contain',
-                  marginBottom: '12px',
-                }}
-              />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                <img src="/logo.png" alt="Logo" style={{ height: '28px', width: 'auto', objectFit: 'contain' }} />
+                <div style={{
+                  fontFamily: 'Outfit, sans-serif', fontWeight: 900,
+                  fontSize: '24px',
+                  background: 'linear-gradient(135deg, #e50914, #f5a623)',
+                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                }}>SAGARVK18</div>
+              </div>
               <p style={{ color: '#666680', fontSize: '13px', fontFamily: 'Inter, sans-serif' }}>
                 Your premium streaming destination.
               </p>

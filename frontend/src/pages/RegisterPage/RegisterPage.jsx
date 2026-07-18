@@ -102,17 +102,23 @@ const RegisterPage = () => {
       >
         {/* Logo */}
         <Link to="/" style={{ textDecoration: 'none' }}>
-          <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-            <img
-              src="/logo.jpg"
-              alt="SAGARVK18"
-              style={{
-                height: '46px',
-                borderRadius: '8px',
-                objectFit: 'contain',
-              }}
-            />
-          </div>
+          <motion.div
+            whileHover={{ scale: 1.04 }}
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '32px', gap: '8px' }}
+          >
+            <img src="/logo.png" alt="Logo" style={{ height: '56px', width: 'auto', objectFit: 'contain' }} />
+            <div style={{ textAlign: 'center' }}>
+              <span style={{
+                fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: '26px',
+                background: 'linear-gradient(135deg, #e50914, #f5a623)',
+                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                letterSpacing: '1px',
+              }}>SAGARVK18</span>
+              <p style={{ color: '#666680', fontSize: '11px', fontFamily: 'Outfit, sans-serif', letterSpacing: '3px', marginTop: '2px' }}>
+                STREAMING
+              </p>
+            </div>
+          </motion.div>
         </Link>
 
         <h1 style={{
