@@ -55,15 +55,16 @@ const ProfileCard = ({ profile, onSelect, onDelete, editMode }) => {
 
       {/* Avatar */}
       <div style={{
-        width: '120px', height: '120px', borderRadius: '18px',
+        width: '120px', height: '120px', borderRadius: '24px',
         background: bg,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         fontSize: '52px', fontWeight: 900,
         fontFamily: 'Outfit, sans-serif', color: '#fff',
         boxShadow: editMode
           ? '0 0 0 3px rgba(229,9,20,0.5)'
-          : '0 8px 30px rgba(0,0,0,0.4)',
-        transition: 'box-shadow 0.3s ease',
+          : 'var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+        border: '1px solid rgba(255,255,255,0.08)',
+        transition: 'all 0.35s var(--ease-liquid)',
       }}>
         {initial}
       </div>
@@ -132,7 +133,7 @@ const ProfileSelectPage = () => {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0f 70%)',
+      background: 'radial-gradient(ellipse at center, #12122a 0%, #080810 70%)',
       display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
       padding: '40px 20px',
@@ -234,7 +235,6 @@ const ProfileSelectPage = () => {
         </motion.div>
       )}
 
-      {/* Manage button */}
       <motion.button
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -242,15 +242,10 @@ const ProfileSelectPage = () => {
         whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.96 }}
         onClick={() => setEditMode((v) => !v)}
+        className={editMode ? "liquid-btn-primary" : "liquid-btn-secondary"}
         style={{
-          background: editMode ? '#e50914' : 'transparent',
-          color: editMode ? '#fff' : '#b3b3cc',
-          border: `1.5px solid ${editMode ? '#e50914' : 'rgba(255,255,255,0.2)'}`,
-          borderRadius: '12px', padding: '12px 28px',
-          fontFamily: 'Outfit, sans-serif', fontWeight: 600,
-          fontSize: '15px', cursor: 'pointer',
-          display: 'flex', alignItems: 'center', gap: '8px',
-          transition: 'all 0.2s',
+          padding: '12px 28px',
+          fontSize: '15px',
         }}
       >
         {editMode
@@ -275,12 +270,18 @@ const ProfileSelectPage = () => {
             onClick={() => setShowAdd(false)}
           >
             <motion.div
-              initial={{ scale: 0.85, opacity: 0 }}
+              initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.85, opacity: 0 }}
+              exit={{ scale: 0.95, opacity: 0 }}
               transition={{ type: 'spring', damping: 25, stiffness: 320 }}
               onClick={(e) => e.stopPropagation()}
-              className="add-profile-modal-card"
+              className="add-profile-modal-card liquid-glass-dense"
+              style={{
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderTopColor: 'rgba(255,255,255,0.15)',
+                borderRadius: '24px',
+                boxShadow: 'var(--shadow-lg)',
+              }}
             >
               <h2 style={{
                 fontFamily: 'Outfit, sans-serif', fontWeight: 700,
@@ -296,26 +297,20 @@ const ProfileSelectPage = () => {
                   onChange={(e) => setNewName(e.target.value)}
                   placeholder="Profile name"
                   maxLength={20}
+                  className="liquid-input"
                   style={{
-                    background: 'rgba(255,255,255,0.07)',
-                    border: '1.5px solid rgba(255,255,255,0.15)',
-                    borderRadius: '12px', color: '#fff',
-                    fontSize: '16px', fontFamily: 'Outfit, sans-serif',
-                    padding: '14px 18px', outline: 'none',
+                    padding: '14px 18px',
                   }}
                   onFocus={(e) => (e.target.style.borderColor = '#e50914')}
-                  onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.15)')}
+                  onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                 />
                 <div style={{ display: 'flex', gap: '12px' }}>
                   <button
                     type="button"
                     onClick={() => setShowAdd(false)}
+                    className="liquid-btn-secondary"
                     style={{
-                      flex: 1, background: 'transparent',
-                      border: '1.5px solid rgba(255,255,255,0.2)',
-                      color: '#b3b3cc', borderRadius: '12px',
-                      padding: '13px', fontFamily: 'Outfit, sans-serif',
-                      fontWeight: 600, fontSize: '15px', cursor: 'pointer',
+                      flex: 1, padding: '13px', justifyContent: 'center',
                     }}
                   >Cancel</button>
                   <motion.button
@@ -323,13 +318,11 @@ const ProfileSelectPage = () => {
                     whileTap={{ scale: 0.97 }}
                     type="submit"
                     disabled={loading || !newName.trim()}
+                    className="liquid-btn-primary"
                     style={{
                       flex: 1,
                       background: (!newName.trim() || loading) ? 'rgba(229,9,20,0.4)' : '#e50914',
-                      color: '#fff', border: 'none',
-                      borderRadius: '12px', padding: '13px',
-                      fontFamily: 'Outfit, sans-serif',
-                      fontWeight: 700, fontSize: '15px',
+                      padding: '13px', justifyContent: 'center',
                       cursor: (!newName.trim() || loading) ? 'not-allowed' : 'pointer',
                     }}
                   >

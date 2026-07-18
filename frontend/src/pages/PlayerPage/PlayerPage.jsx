@@ -184,7 +184,7 @@ const PlayerPage = () => {
           position: 'absolute', inset: 0,
           display: 'flex', flexDirection: 'column',
           alignItems: 'center', justifyContent: 'center',
-          background: 'radial-gradient(ellipse at center, #1a1a2e 0%, #000 100%)',
+          background: 'radial-gradient(ellipse at center, #12122a 0%, #000 100%)',
           gap: '20px',
         }}>
           <span style={{ fontSize: '80px', opacity: 0.3 }}>🎬</span>
@@ -221,16 +221,13 @@ const PlayerPage = () => {
               padding: '20px 24px',
             }}>
               <motion.button
-                whileHover={{ scale: 1.08, background: 'rgba(255,255,255,0.15)' }}
-                whileTap={{ scale: 0.94 }}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
                 onClick={() => navigate(-1)}
+                className="liquid-btn-secondary"
                 style={{
-                  background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255,255,255,0.15)',
-                  color: '#fff', borderRadius: '10px',
-                  padding: '8px 16px', cursor: 'pointer',
-                  display: 'flex', alignItems: 'center', gap: '8px',
-                  fontFamily: 'Outfit, sans-serif', fontSize: '14px', fontWeight: 600,
+                  background: 'rgba(0,0,0,0.5)',
+                  padding: '8px 16px',
                 }}
               >
                 <FiArrowLeft size={18} /> Back
@@ -247,15 +244,13 @@ const PlayerPage = () => {
               {/* Quality selector */}
               <div style={{ position: 'relative' }}>
                 <motion.button
-                  whileHover={{ scale: 1.06 }}
+                  whileHover={{ scale: 1.04 }}
                   onClick={() => setShowQuality((v) => !v)}
+                  className="liquid-btn-secondary"
                   style={{
-                    background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255,255,255,0.15)',
-                    color: '#fff', borderRadius: '10px',
-                    padding: '8px 14px', cursor: 'pointer',
-                    display: 'flex', alignItems: 'center', gap: '6px',
-                    fontFamily: 'Outfit, sans-serif', fontSize: '13px', fontWeight: 600,
+                    background: 'rgba(0,0,0,0.5)',
+                    padding: '8px 14px',
+                    fontSize: '13px',
                   }}
                 >
                   <FiSettings size={15} /> {quality}
@@ -266,11 +261,11 @@ const PlayerPage = () => {
                       initial={{ opacity: 0, y: -8 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -8 }}
+                      className="liquid-glass-dense"
                       style={{
                         position: 'absolute', top: '44px', right: 0,
-                        background: 'rgba(18,18,30,0.98)',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        borderRadius: '12px', overflow: 'hidden',
+                        border: '1px solid rgba(255,255,255,0.08)',
+                        borderRadius: '14px', overflow: 'hidden',
                         minWidth: '120px',
                       }}
                     >
@@ -301,16 +296,20 @@ const PlayerPage = () => {
             {/* Center play indicator */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <motion.button
-                whileHover={{ scale: 1.12 }}
+                whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setPlaying((v) => !v)}
                 style={{
-                  background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(16px)',
-                  border: '2px solid rgba(255,255,255,0.3)',
+                  background: 'rgba(15,15,28,0.55)',
+                  backdropFilter: 'blur(24px) saturate(180%)',
+                  WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+                  border: '1px solid rgba(255,255,255,0.15)',
+                  borderTopColor: 'rgba(255,255,255,0.22)',
                   color: '#fff', borderRadius: '50%',
                   width: '72px', height: '72px',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   cursor: 'pointer',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06)',
                 }}
               >
                 {playing
@@ -431,7 +430,7 @@ const iconBtnStyle = {
   background: 'none', border: 'none',
   color: '#fff', cursor: 'pointer',
   display: 'flex', alignItems: 'center', justifyContent: 'center',
-  padding: '6px', borderRadius: '8px',
+  padding: '6px', borderRadius: '50%',
   transition: 'background 0.15s',
 }
 

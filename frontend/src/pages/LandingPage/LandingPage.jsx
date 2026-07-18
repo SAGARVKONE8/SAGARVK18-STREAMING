@@ -102,7 +102,7 @@ const LandingPage = () => {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0f', overflow: 'hidden' }}>
+    <div style={{ minHeight: '100vh', background: '#080810', overflow: 'hidden' }}>
       <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -120,8 +120,12 @@ const LandingPage = () => {
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         padding: '0 4vw', height: '70px',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        background: 'rgba(10,10,15,0.9)', backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(255,255,255,0.05)',
+        background: 'rgba(12,12,20,0.55)',
+        backdropFilter: 'blur(40px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(40px) saturate(180%)',
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        borderTop: '1px solid rgba(255,255,255,0.08)',
+        boxShadow: '0 8px 40px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)',
       }}>
         <div style={{
           fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: '22px',
@@ -129,21 +133,22 @@ const LandingPage = () => {
           WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
           letterSpacing: '1px',
         }}>SAGARVK18</div>
-        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
           <Link to="/login" style={{
             fontFamily: 'Outfit, sans-serif', fontWeight: 500,
-            fontSize: '14px', color: '#b3b3cc', textDecoration: 'none',
-          }}>Sign In</Link>
+            fontSize: '14px', color: '#a0a0c0', textDecoration: 'none',
+            transition: 'color 0.2s',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = '#a0a0c0')}
+          >Sign In</Link>
           <Link to="/register">
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              className="liquid-btn-primary"
               style={{
-                background: '#e50914', color: '#fff',
-                border: 'none', borderRadius: '10px',
-                padding: '10px 20px', fontSize: '14px',
-                fontWeight: 700, cursor: 'pointer',
-                fontFamily: 'Outfit, sans-serif',
+                padding: '8px 20px', fontSize: '14px',
               }}
             >Get Started</motion.button>
           </Link>
@@ -244,34 +249,29 @@ const LandingPage = () => {
             onSubmit={handleGetStarted}
             className="responsive-cta-form"
           >
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email address"
-              style={{
-                flex: 1, minWidth: '280px',
-                background: 'rgba(255,255,255,0.07)',
-                border: '1.5px solid rgba(255,255,255,0.15)',
-                borderRadius: '12px', color: '#fff',
-                fontSize: '15px', fontFamily: 'Outfit, sans-serif',
-                padding: '14px 20px', outline: 'none',
-              }}
-              onFocus={(e) => (e.target.style.borderColor = '#e50914')}
-              onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.15)')}
-            />
+            <div style={{ position: 'relative', flex: 1, display: 'flex' }}>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email address"
+                className="liquid-input"
+                style={{
+                  paddingLeft: '20px',
+                  borderRadius: '9999px',
+                }}
+                onFocus={(e) => (e.target.style.borderColor = 'rgba(229,9,20,0.5)')}
+                onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
+              />
+            </div>
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(229,9,20,0.5)' }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
               type="submit"
+              className="liquid-btn-primary"
               style={{
-                background: '#e50914', color: '#fff',
-                border: 'none', borderRadius: '12px',
-                padding: '14px 28px', fontSize: '16px',
-                fontWeight: 700, cursor: 'pointer',
-                fontFamily: 'Outfit, sans-serif',
-                display: 'flex', alignItems: 'center', gap: '8px',
-                boxShadow: '0 4px 20px rgba(229,9,20,0.35)',
+                padding: '14px 32px', fontSize: '16px',
+                whiteSpace: 'nowrap',
               }}
             >
               Get Started <FiArrowRight size={18} />
@@ -299,7 +299,7 @@ const LandingPage = () => {
       {/* ── Features Section ── */}
       <section style={{
         padding: '100px 4vw',
-        background: 'linear-gradient(180deg, #0a0a0f 0%, #12122a 50%, #0a0a0f 100%)',
+        background: 'linear-gradient(180deg, #080810 0%, #12122a 50%, #080810 100%)',
       }}>
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
@@ -330,14 +330,11 @@ const LandingPage = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.5 }}
               whileHover={{ y: -6, boxShadow: '0 24px 60px rgba(229,9,20,0.12)' }}
+              className="liquid-glass-card"
               style={{
-                background: 'rgba(26,26,46,0.6)',
-                backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255,255,255,0.08)',
                 borderRadius: '24px',
                 padding: '40px 32px',
                 textAlign: 'center',
-                transition: 'box-shadow 0.3s ease',
               }}
             >
               <div style={{
@@ -360,7 +357,7 @@ const LandingPage = () => {
       </section>
 
       {/* ── Plans Section ── */}
-      <section style={{ padding: '100px 4vw', background: '#0a0a0f' }}>
+      <section style={{ padding: '100px 4vw', background: '#080810' }}>
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -390,16 +387,14 @@ const LandingPage = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
               whileHover={{ y: -8, boxShadow: `0 28px 70px ${plan.color}22` }}
+              className="liquid-glass-card"
               style={{
                 position: 'relative',
-                background: 'rgba(18,18,30,0.8)',
-                backdropFilter: 'blur(20px)',
                 border: plan.popular
                   ? `2px solid ${plan.color}`
                   : '1px solid rgba(255,255,255,0.08)',
                 borderRadius: '24px',
                 padding: '36px 28px',
-                transition: 'box-shadow 0.3s ease',
               }}
             >
               {plan.popular && (
@@ -458,17 +453,15 @@ const LandingPage = () => {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
                 onClick={() => navigate('/register')}
+                className={plan.popular ? "liquid-btn-primary" : "liquid-btn-secondary"}
                 style={{
                   width: '100%',
+                  justifyContent: 'center',
                   background: plan.popular ? plan.color : 'transparent',
                   border: `2px solid ${plan.color}`,
                   color: plan.popular ? '#fff' : plan.color,
-                  borderRadius: '12px',
+                  borderRadius: '9999px',
                   padding: '13px',
-                  fontFamily: 'Outfit, sans-serif',
-                  fontWeight: 700, fontSize: '15px',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease',
                 }}
               >
                 {plan.id === 'FREE' ? 'Get Started Free' : `Choose ${plan.name}`}
@@ -503,16 +496,12 @@ const LandingPage = () => {
           Join millions of viewers. Start your journey today.
         </p>
         <motion.button
-          whileHover={{ scale: 1.06, boxShadow: '0 0 40px rgba(229,9,20,0.5)' }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.96 }}
           onClick={() => navigate('/register')}
+          className="liquid-btn-primary"
           style={{
-            background: '#e50914', color: '#fff',
-            border: 'none', borderRadius: '14px',
             padding: '18px 44px', fontSize: '18px',
-            fontWeight: 700, cursor: 'pointer',
-            fontFamily: 'Outfit, sans-serif',
-            boxShadow: '0 4px 24px rgba(229,9,20,0.35)',
           }}
         >
           Start Watching Now 🎬
@@ -522,7 +511,7 @@ const LandingPage = () => {
       {/* ── Footer ── */}
       <footer style={{
         padding: '48px 4vw',
-        background: '#0a0a0f',
+        background: '#080810',
         borderTop: '1px solid rgba(255,255,255,0.05)',
       }}>
         <div style={{

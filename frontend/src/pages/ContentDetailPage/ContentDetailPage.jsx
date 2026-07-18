@@ -121,13 +121,11 @@ const ContentDetailPage = () => {
   if (loading) return <LoadingSpinner />
 
   if (!content) return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0f', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ minHeight: '100vh', background: '#080810', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ textAlign: 'center' }}>
         <p style={{ color: '#fff', fontSize: '24px', fontFamily: 'Outfit, sans-serif' }}>Content not found</p>
-        <button onClick={() => navigate('/home')} style={{
-          background: '#e50914', color: '#fff', border: 'none',
-          borderRadius: '12px', padding: '12px 24px', cursor: 'pointer',
-          fontFamily: 'Outfit, sans-serif', fontWeight: 700, marginTop: '16px',
+        <button onClick={() => navigate('/home')} className="liquid-btn-primary" style={{
+          padding: '12px 24px', marginTop: '16px',
         }}>Go Home</button>
       </div>
     </div>
@@ -142,7 +140,7 @@ const ContentDetailPage = () => {
     : content.rating?.toFixed(1) || 'N/A'
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0f' }}>
+    <div style={{ minHeight: '100vh', background: '#080810' }}>
       <Navbar />
       <TrailerModal
         isOpen={trailerOpen}
@@ -160,28 +158,23 @@ const ContentDetailPage = () => {
         }} />
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(to top, #0a0a0f 0%, rgba(10,10,15,0.6) 50%, rgba(10,10,15,0.3) 100%)',
+          background: 'linear-gradient(to top, #080810 0%, rgba(10,10,15,0.6) 50%, rgba(10,10,15,0.3) 100%)',
         }} />
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(to right, rgba(10,10,15,0.5), transparent 60%)',
+          background: 'linear-gradient(to right, rgba(8,8,16,0.5), transparent 60%)',
         }} />
 
         {/* Back button */}
         <motion.button
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          whileHover={{ scale: 1.05, background: 'rgba(255,255,255,0.15)' }}
+          whileHover={{ scale: 1.04 }}
           onClick={() => navigate(-1)}
+          className="liquid-btn-secondary"
           style={{
             position: 'absolute', top: '88px', left: '4vw',
-            background: 'rgba(10,10,15,0.7)',
-            backdropFilter: 'blur(10px)',
-            border: '1px solid rgba(255,255,255,0.15)',
-            color: '#fff', borderRadius: '12px',
-            padding: '10px 18px', cursor: 'pointer',
-            display: 'flex', alignItems: 'center', gap: '8px',
-            fontFamily: 'Outfit, sans-serif', fontSize: '14px', fontWeight: 600,
+            padding: '10px 20px',
           }}
         >
           <FiArrowLeft size={17} /> Back
@@ -220,13 +213,10 @@ const ContentDetailPage = () => {
           >
             {/* Premium badge */}
             {content.isPremium && (
-              <span style={{
-                display: 'inline-flex', alignItems: 'center', gap: '5px',
-                background: 'linear-gradient(135deg, #f5a623, #e8960e)',
-                color: '#000', fontWeight: 800, fontSize: '11px',
-                padding: '4px 14px', borderRadius: '20px',
-                letterSpacing: '1px', marginBottom: '12px',
-                fontFamily: 'Outfit, sans-serif',
+              <span className="liquid-badge liquid-badge-premium" style={{
+                fontSize: '11px',
+                padding: '4px 14px',
+                marginBottom: '12px',
               }}>👑 PREMIUM</span>
             )}
 
@@ -255,17 +245,13 @@ const ContentDetailPage = () => {
                   <FiGlobe size={14} /> {content.language}
                 </span>
               )}
-              <span style={{
-                background: 'rgba(255,255,255,0.1)', color: '#fff',
-                padding: '3px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 600,
-              }}>
+               <span className="liquid-badge" style={{ padding: '3px 12px', fontSize: '12px' }}>
                 {content.contentType || content.type || 'MOVIE'}
               </span>
               {content.ageRating && (
-                <span style={{
-                  border: '1.5px solid rgba(255,255,255,0.3)', color: '#fff',
-                  padding: '3px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600,
-                }}>{content.ageRating}</span>
+                <span className="liquid-badge" style={{ padding: '3px 10px', fontSize: '12px' }}>
+                  {content.ageRating}
+                </span>
               )}
               <span style={{
                 display: 'flex', alignItems: 'center', gap: '4px',
@@ -276,14 +262,13 @@ const ContentDetailPage = () => {
             </div>
 
             {/* Genres */}
-            <div className="detail-genres-row">
+            <div className="detail-genres-row" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
               {(content.genres || []).map((g) => (
-              <span key={g.id || g.name || g} style={{
-                background: 'rgba(229,9,20,0.15)',
-                border: '1px solid rgba(229,9,20,0.3)',
-                color: '#e50914', fontSize: '12px', fontWeight: 500,
-                padding: '4px 12px', borderRadius: '20px',
-                fontFamily: 'Outfit, sans-serif',
+              <span key={g.id || g.name || g} className="liquid-badge" style={{
+                background: 'rgba(229,9,20,0.1)',
+                borderColor: 'rgba(229,9,20,0.25)',
+                color: '#e50914', fontSize: '12px',
+                padding: '4px 14px',
               }}>{g.name || g}</span>
             ))}
             </div>
@@ -309,18 +294,13 @@ const ContentDetailPage = () => {
             )}
 
             {/* Action buttons */}
-            <div className="detail-actions-row">
+            <div className="detail-actions-row" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '24px' }}>
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: '0 0 28px rgba(229,9,20,0.5)' }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
                 onClick={handlePlay}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: '10px',
-                  background: '#e50914', color: '#fff',
-                  border: 'none', borderRadius: '12px',
-                  padding: '14px 30px', fontSize: '16px', fontWeight: 700,
-                  cursor: 'pointer', fontFamily: 'Outfit, sans-serif',
-                }}
+                className="liquid-btn-primary"
+                style={{ padding: '14px 32px', fontSize: '16px' }}
               >
                 {content.isPremium && !isPremium
                   ? <><FiLock size={18} /> Unlock Premium</>
@@ -329,35 +309,26 @@ const ContentDetailPage = () => {
 
               {content.trailerUrl && (
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.96 }}
                   onClick={() => setTrailerOpen(true)}
-                  style={{
-                    display: 'flex', alignItems: 'center', gap: '10px',
-                    background: 'rgba(255,255,255,0.1)',
-                    backdropFilter: 'blur(10px)',
-                    color: '#fff', border: '1px solid rgba(255,255,255,0.2)',
-                    borderRadius: '12px', padding: '14px 24px',
-                    fontSize: '16px', fontWeight: 600, cursor: 'pointer',
-                    fontFamily: 'Outfit, sans-serif',
-                  }}
+                  className="liquid-btn-secondary"
+                  style={{ padding: '14px 24px', fontSize: '16px' }}
                 >
                   ▷ Trailer
                 </motion.button>
               )}
 
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
                 onClick={handleWatchlist}
+                className="liquid-btn-secondary"
                 style={{
-                  display: 'flex', alignItems: 'center', gap: '10px',
-                  background: inList ? 'rgba(245,166,35,0.15)' : 'rgba(255,255,255,0.08)',
+                  padding: '14px 22px', fontSize: '16px',
+                  background: inList ? 'rgba(245,166,35,0.12)' : 'rgba(255,255,255,0.06)',
                   color: inList ? '#f5a623' : '#fff',
-                  border: inList ? '1px solid rgba(245,166,35,0.35)' : '1px solid rgba(255,255,255,0.18)',
-                  borderRadius: '12px', padding: '14px 22px',
-                  fontSize: '16px', fontWeight: 600, cursor: 'pointer',
-                  fontFamily: 'Outfit, sans-serif',
+                  borderColor: inList ? 'rgba(245,166,35,0.3)' : 'rgba(255,255,255,0.12)',
                 }}
               >
                 {inList ? <FiCheck size={18} /> : <FiPlus size={18} />}
@@ -366,11 +337,10 @@ const ContentDetailPage = () => {
             </div>
 
             {/* User rating */}
-            <div style={{
-              background: 'rgba(26,26,46,0.6)', backdropFilter: 'blur(12px)',
-              border: '1px solid rgba(255,255,255,0.08)',
-              borderRadius: '16px', padding: '20px 24px',
+            <div className="liquid-glass-card" style={{
+              padding: '20px 24px',
               display: 'inline-block',
+              borderRadius: '16px',
             }}>
               <p style={{
                 color: '#b3b3cc', fontFamily: 'Outfit, sans-serif',

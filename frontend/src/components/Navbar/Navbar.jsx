@@ -74,7 +74,7 @@ const Navbar = () => {
       <motion.nav
         initial={{ y: -80 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.45, ease: 'easeOut' }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         style={{
           position:     'fixed',
           top: 0, left: 0, right: 0,
@@ -85,11 +85,14 @@ const Navbar = () => {
           alignItems:   'center',
           justifyContent: 'space-between',
           background:   scrolled
-            ? 'rgba(10,10,15,0.96)'
-            : 'linear-gradient(to bottom, rgba(0,0,0,0.75), transparent)',
-          backdropFilter: scrolled ? 'blur(24px)' : 'none',
+            ? 'rgba(12,12,20,0.55)'
+            : 'linear-gradient(to bottom, rgba(0,0,0,0.6), transparent)',
+          backdropFilter: scrolled ? 'blur(40px) saturate(180%)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(40px) saturate(180%)' : 'none',
           borderBottom:   scrolled ? '1px solid rgba(255,255,255,0.06)' : 'none',
-          transition:   'background 0.4s ease, border-color 0.4s ease',
+          borderTop:      scrolled ? '1px solid rgba(255,255,255,0.08)' : 'none',
+          boxShadow:      scrolled ? '0 8px 40px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)' : 'none',
+          transition:   'all 0.45s cubic-bezier(0.22, 1, 0.36, 1)',
         }}
       >
         {/* ── Logo ── */}
@@ -118,7 +121,7 @@ const Navbar = () => {
         </Link>
 
         {/* ── Desktop nav links ── */}
-        <div className="nav-links-desktop" style={{ alignItems: 'center', gap: '28px' }}>
+        <div className="nav-links-desktop" style={{ alignItems: 'center', gap: '6px' }}>
           {navLinks.map((lnk) => (
             <Link
               key={lnk.path}
@@ -126,17 +129,33 @@ const Navbar = () => {
               style={{
                 textDecoration: 'none',
                 fontFamily: 'Outfit, sans-serif',
-                fontWeight: 500,
-                fontSize:   '15px',
-                color:      isActive(lnk.path) ? '#ffffff' : '#b3b3cc',
-                paddingBottom: '3px',
-                borderBottom:  isActive(lnk.path)
-                  ? '2px solid #e50914'
-                  : '2px solid transparent',
-                transition: 'color 0.2s, border-color 0.2s',
+                fontWeight: isActive(lnk.path) ? 600 : 400,
+                fontSize:   '14px',
+                color:      isActive(lnk.path) ? '#ffffff' : '#a0a0c0',
+                padding:    '7px 18px',
+                borderRadius: '9999px',
+                background: isActive(lnk.path)
+                  ? 'rgba(255,255,255,0.08)'
+                  : 'transparent',
+                border: isActive(lnk.path)
+                  ? '1px solid rgba(255,255,255,0.1)'
+                  : '1px solid transparent',
+                backdropFilter: isActive(lnk.path) ? 'blur(12px)' : 'none',
+                transition: 'all 0.35s cubic-bezier(0.22, 1, 0.36, 1)',
+                letterSpacing: '0.3px',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = isActive(lnk.path) ? '#fff' : '#b3b3cc')}
+              onMouseEnter={(e) => {
+                if (!isActive(lnk.path)) {
+                  e.currentTarget.style.color = '#fff'
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isActive(lnk.path)) {
+                  e.currentTarget.style.color = '#a0a0c0'
+                  e.currentTarget.style.background = 'transparent'
+                }
+              }}
             >
               {lnk.label}
             </Link>
@@ -196,16 +215,18 @@ const Navbar = () => {
                   initial={{ opacity: 0, y: -8, scale: 0.96 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -8, scale: 0.96 }}
-                  transition={{ duration: 0.15 }}
+                  transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
                   style={{
                     position: 'absolute', top: '52px', right: 0,
-                    background: 'rgba(18,18,30,0.98)',
-                    backdropFilter: 'blur(24px)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    borderRadius: '18px',
+                    background: 'rgba(15,15,28,0.65)',
+                    backdropFilter: 'blur(40px) saturate(180%)',
+                    WebkitBackdropFilter: 'blur(40px) saturate(180%)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    borderTopColor: 'rgba(255,255,255,0.12)',
+                    borderRadius: '20px',
                     padding: '8px',
                     minWidth: '210px',
-                    boxShadow: '0 24px 60px rgba(0,0,0,0.55)',
+                    boxShadow: '0 24px 80px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.05)',
                   }}
                 >
                   {/* Header */}

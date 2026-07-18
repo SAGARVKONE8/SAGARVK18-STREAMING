@@ -167,9 +167,8 @@ const HeroBanner = ({ contents = [] }) => {
                 <FiClock size={13} /> {content.duration}
               </span>
             )}
-            <span style={{
-              background: 'rgba(255,255,255,0.12)', color: '#fff',
-              padding: '3px 12px', borderRadius: '8px', fontSize: '12px', fontWeight: 600,
+            <span className="liquid-badge" style={{
+              padding: '4px 14px', fontSize: '12px',
             }}>
               {content.contentType || content.type || 'MOVIE'}
             </span>
@@ -186,12 +185,11 @@ const HeroBanner = ({ contents = [] }) => {
             style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '14px' }}
           >
             {(content.genres || []).slice(0, 3).map((g) => (
-              <span key={g.id || g.name || g} style={{
-                background: 'rgba(229,9,20,0.15)',
-                border: '1px solid rgba(229,9,20,0.3)',
-                color: '#e50914', fontSize: '12px', fontWeight: 500,
-                padding: '4px 12px', borderRadius: '20px',
-                fontFamily: 'Outfit, sans-serif',
+              <span key={g.id || g.name || g} className="liquid-badge" style={{
+                background: 'rgba(229,9,20,0.1)',
+                borderColor: 'rgba(229,9,20,0.25)',
+                color: '#e50914', fontSize: '12px',
+                padding: '4px 14px',
               }}>{g.name || g}</span>
             ))}
           </motion.div>
@@ -221,36 +219,22 @@ const HeroBanner = ({ contents = [] }) => {
           >
             {/* Play */}
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: '0 0 32px rgba(229,9,20,0.55)' }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.04, boxShadow: '0 8px 40px rgba(229,9,20,0.5), inset 0 1px 0 rgba(255,255,255,0.2)' }}
+              whileTap={{ scale: 0.96 }}
               onClick={() => navigate(`/watch/${content.id}`)}
-              style={{
-                display: 'flex', alignItems: 'center', gap: '10px',
-                background: '#e50914', color: '#fff',
-                border: 'none', borderRadius: '12px',
-                padding: '14px 30px', fontSize: '16px', fontWeight: 700,
-                cursor: 'pointer', fontFamily: 'Outfit, sans-serif',
-                boxShadow: '0 4px 20px rgba(229,9,20,0.35)',
-              }}
+              className="liquid-btn-primary"
+              style={{ padding: '14px 32px', fontSize: '16px' }}
             >
               <FiPlay size={20} fill="#fff" /> Play Now
             </motion.button>
 
             {/* My List */}
             <motion.button
-              whileHover={{ scale: 1.05, background: 'rgba(255,255,255,0.18)' }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.04, background: 'rgba(255,255,255,0.12)' }}
+              whileTap={{ scale: 0.96 }}
               onClick={handleWatchlist}
-              style={{
-                display: 'flex', alignItems: 'center', gap: '10px',
-                background: 'rgba(255,255,255,0.1)',
-                backdropFilter: 'blur(12px)',
-                color: '#fff',
-                border: '1px solid rgba(255,255,255,0.22)',
-                borderRadius: '12px',
-                padding: '14px 26px', fontSize: '16px', fontWeight: 600,
-                cursor: 'pointer', fontFamily: 'Outfit, sans-serif',
-              }}
+              className="liquid-btn-secondary"
+              style={{ padding: '14px 28px', fontSize: '16px' }}
             >
               {inWatchlist ? <FiCheck size={20} color="#f5a623" /> : <FiPlus size={20} />}
               {inWatchlist ? 'In My List' : 'My List'}
@@ -258,16 +242,15 @@ const HeroBanner = ({ contents = [] }) => {
 
             {/* More Info */}
             <motion.button
-              whileHover={{ scale: 1.05, background: 'rgba(255,255,255,0.1)' }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.04, background: 'rgba(255,255,255,0.08)' }}
+              whileTap={{ scale: 0.96 }}
               onClick={() => navigate(`/content/${content.id}`)}
+              className="liquid-btn-secondary"
               style={{
-                display: 'flex', alignItems: 'center', gap: '10px',
-                background: 'transparent', color: '#fff',
-                border: '1px solid rgba(255,255,255,0.3)',
-                borderRadius: '12px',
-                padding: '14px 26px', fontSize: '16px', fontWeight: 600,
-                cursor: 'pointer', fontFamily: 'Outfit, sans-serif',
+                padding: '14px 28px', fontSize: '16px',
+                background: 'transparent',
+                border: '1px solid rgba(255,255,255,0.15)',
+                borderTopColor: 'rgba(255,255,255,0.22)',
               }}
             >
               <FiInfo size={20} /> More Info

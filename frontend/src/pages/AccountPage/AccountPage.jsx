@@ -168,7 +168,7 @@ const AccountPage = () => {
   const subColor = PLANS.find((p) => p.id === user.subscriptionType)?.color || '#666680'
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0f' }}>
+    <div style={{ minHeight: '100vh', background: '#080810' }}>
       <Navbar />
 
       <div style={{ padding: '100px 4vw 60px', maxWidth: '1100px', margin: '0 auto' }}>
@@ -184,20 +184,28 @@ const AccountPage = () => {
         >Account Settings</motion.h1>
 
         {/* Tabs */}
-        <div className="tabs-scrollable">
+        <div className="tabs-scrollable" style={{ display: 'flex', gap: '8px', marginBottom: '28px', overflowX: 'auto', paddingBottom: '4px' }}>
           {TABS.map((t) => (
             <button
               key={t}
               onClick={() => setTab(t)}
+              className="liquid-badge"
               style={{
-                flex: 1, minWidth: '80px',
-                padding: '10px 16px', borderRadius: '12px',
-                fontFamily: 'Outfit, sans-serif', fontWeight: 600,
-                fontSize: '14px', cursor: 'pointer',
-                border: 'none',
-                background: tab === t ? '#e50914' : 'transparent',
-                color: tab === t ? '#fff' : '#666680',
-                transition: 'all 0.2s',
+                flex: 1, minWidth: '90px',
+                padding: '10px 16px',
+                background: tab === t
+                  ? 'linear-gradient(135deg, var(--accent-red), #ff2d3a)'
+                  : 'rgba(255,255,255,0.04)',
+                color: tab === t ? '#fff' : '#a0a0c0',
+                borderColor: tab === t
+                  ? 'rgba(229,9,20,0.4)'
+                  : 'rgba(255,255,255,0.08)',
+                cursor: 'pointer',
+                boxShadow: tab === t
+                  ? '0 4px 24px rgba(229,9,20,0.25), inset 0 1px 0 rgba(255,255,255,0.15)'
+                  : 'inset 0 1px 0 rgba(255,255,255,0.04)',
+                backdropFilter: 'blur(12px)',
+                transition: 'all 0.35s cubic-bezier(0.22, 1, 0.36, 1)',
               }}
             >{t}</button>
           ))}
@@ -206,10 +214,8 @@ const AccountPage = () => {
         {/* ── Account tab ── */}
         {tab === 'Account' && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <div style={{
-              background: 'rgba(26,26,46,0.6)',
-              border: '1px solid rgba(255,255,255,0.08)',
-              borderRadius: '24px', padding: '36px',
+            <div className="liquid-glass-card" style={{
+              padding: '36px',
               marginBottom: '24px',
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '28px' }}>
@@ -290,14 +296,17 @@ const AccountPage = () => {
               gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
               gap: '18px', marginBottom: '28px',
             }}>
-              {PLANS.map((plan) => {
+              {PLANS.map((plan, i) => {
                 const isCurrent = user.subscriptionType === plan.id
                 return (
                   <motion.div
                     key={plan.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.08, ease: 'easeOut' }}
                     whileHover={{ y: -4 }}
+                    className="liquid-glass-card"
                     style={{
-                      background: 'rgba(18,18,30,0.8)',
                       border: isCurrent ? `2px solid ${plan.color}` : '1px solid rgba(255,255,255,0.08)',
                       borderRadius: '22px', padding: '28px 22px',
                       position: 'relative',
@@ -329,12 +338,11 @@ const AccountPage = () => {
                         whileHover={{ scale: 1.04 }}
                         whileTap={{ scale: 0.96 }}
                         onClick={() => handleSubscribe(plan.id)}
+                        className="liquid-btn-primary"
                         style={{
                           width: '100%', background: plan.color,
-                          color: '#fff', border: 'none',
-                          borderRadius: '12px', padding: '12px',
-                          fontFamily: 'Outfit, sans-serif', fontWeight: 700,
-                          fontSize: '14px', cursor: 'pointer',
+                          justifyContent: 'center', padding: '12px',
+                          borderRadius: '9999px',
                         }}
                       >
                         {subscribing === plan.id ? 'Processing…' : `Switch to ${plan.name}`}
@@ -352,8 +360,8 @@ const AccountPage = () => {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
+                  className="liquid-glass-card"
                   style={{
-                    background: 'rgba(26,26,46,0.8)',
                     border: '1px solid rgba(245,166,35,0.3)',
                     borderRadius: '20px', padding: '28px',
                     overflow: 'hidden',
@@ -382,15 +390,12 @@ const AccountPage = () => {
                           value={payCard[f.key]}
                           onChange={(e) => setPayCard((prev) => ({ ...prev, [f.key]: e.target.value }))}
                           placeholder={f.placeholder}
+                          className="liquid-input"
                           style={{
-                            width: '100%', background: 'rgba(255,255,255,0.07)',
-                            border: '1.5px solid rgba(255,255,255,0.1)',
-                            borderRadius: '10px', color: '#fff',
-                            fontSize: '14px', fontFamily: 'Outfit, sans-serif',
-                            padding: '12px 14px', outline: 'none',
+                            padding: '12px 14px',
                           }}
                           onFocus={(e) => (e.target.style.borderColor = '#f5a623')}
-                          onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.1)')}
+                          onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                         />
                       </div>
                     ))}
@@ -400,13 +405,12 @@ const AccountPage = () => {
                     whileTap={{ scale: 0.97 }}
                     onClick={() => handleSubscribe(showPayment)}
                     disabled={!!subscribing}
+                    className="liquid-btn-primary"
                     style={{
                       marginTop: '20px', width: '100%',
                       background: '#f5a623', color: '#000',
-                      border: 'none', borderRadius: '12px',
-                      padding: '14px', fontSize: '16px',
-                      fontWeight: 800, cursor: subscribing ? 'not-allowed' : 'pointer',
-                      fontFamily: 'Outfit, sans-serif',
+                      justifyContent: 'center', padding: '14px',
+                      cursor: subscribing ? 'not-allowed' : 'pointer',
                     }}
                   >
                     {subscribing ? 'Processing…' : '💳 Confirm Payment'}
@@ -422,12 +426,11 @@ const AccountPage = () => {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginBottom: '28px' }}>
               {profiles.map((p) => (
-                <div key={p.id} style={{
-                  background: 'rgba(26,26,46,0.7)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  borderRadius: '18px', padding: '20px 24px',
+                <div key={p.id} className="liquid-glass-card" style={{
+                  padding: '20px 24px',
                   display: 'flex', alignItems: 'center', gap: '16px',
                   minWidth: '240px',
+                  borderRadius: '18px',
                 }}>
                   <div style={{
                     width: '48px', height: '48px', borderRadius: '12px',
@@ -487,8 +490,8 @@ const AccountPage = () => {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
+                  className="liquid-glass-card"
                   style={{
-                    background: 'rgba(26,26,46,0.8)',
                     border: '1px solid rgba(245,166,35,0.3)',
                     borderRadius: '18px', padding: '24px',
                     display: 'flex', gap: '12px', alignItems: 'center',
@@ -498,27 +501,20 @@ const AccountPage = () => {
                   <input
                     value={editName}
                     onChange={(e) => setEditName(e.target.value)}
+                    className="liquid-input"
                     style={{
                       flex: 1, minWidth: '200px',
-                      background: 'rgba(255,255,255,0.07)',
-                      border: '1.5px solid rgba(255,255,255,0.15)',
-                      borderRadius: '10px', color: '#fff',
-                      fontSize: '15px', fontFamily: 'Outfit, sans-serif',
-                      padding: '12px 16px', outline: 'none',
+                      padding: '12px 16px',
                     }}
                     onFocus={(e) => (e.target.style.borderColor = '#f5a623')}
-                    onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.15)')}
+                    onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                   />
-                  <button onClick={handleEditProfile} style={{
+                  <button onClick={handleEditProfile} className="liquid-btn-primary" style={{
                     background: '#f5a623', color: '#000',
-                    border: 'none', borderRadius: '10px',
-                    padding: '12px 22px', fontFamily: 'Outfit, sans-serif',
-                    fontWeight: 700, fontSize: '14px', cursor: 'pointer',
+                    padding: '12px 22px', fontSize: '14px',
                   }}>Save</button>
-                  <button onClick={() => setEditProfile(null)} style={{
-                    background: 'transparent', border: '1px solid rgba(255,255,255,0.15)',
-                    borderRadius: '10px', color: '#666680',
-                    padding: '12px 18px', cursor: 'pointer', fontFamily: 'Outfit, sans-serif',
+                  <button onClick={() => setEditProfile(null)} className="liquid-btn-secondary" style={{
+                    padding: '12px 18px',
                   }}>Cancel</button>
                 </motion.div>
               )}
@@ -527,8 +523,8 @@ const AccountPage = () => {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
+                  className="liquid-glass-card"
                   style={{
-                    background: 'rgba(26,26,46,0.8)',
                     border: '1px solid rgba(229,9,20,0.3)',
                     borderRadius: '18px', padding: '24px',
                     display: 'flex', gap: '12px', alignItems: 'center',
@@ -541,27 +537,19 @@ const AccountPage = () => {
                     onChange={(e) => setNewProName(e.target.value)}
                     placeholder="Profile name"
                     maxLength={20}
+                    className="liquid-input"
                     style={{
                       flex: 1, minWidth: '200px',
-                      background: 'rgba(255,255,255,0.07)',
-                      border: '1.5px solid rgba(255,255,255,0.15)',
-                      borderRadius: '10px', color: '#fff',
-                      fontSize: '15px', fontFamily: 'Outfit, sans-serif',
-                      padding: '12px 16px', outline: 'none',
+                      padding: '12px 16px',
                     }}
                     onFocus={(e) => (e.target.style.borderColor = '#e50914')}
-                    onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.15)')}
+                    onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                   />
-                  <button onClick={handleAddProfile} style={{
-                    background: '#e50914', color: '#fff',
-                    border: 'none', borderRadius: '10px',
-                    padding: '12px 22px', fontFamily: 'Outfit, sans-serif',
-                    fontWeight: 700, fontSize: '14px', cursor: 'pointer',
+                  <button onClick={handleAddProfile} className="liquid-btn-primary" style={{
+                    padding: '12px 22px', fontSize: '14px',
                   }}>Create</button>
-                  <button onClick={() => setShowAddPro(false)} style={{
-                    background: 'transparent', border: '1px solid rgba(255,255,255,0.15)',
-                    borderRadius: '10px', color: '#666680',
-                    padding: '12px 18px', cursor: 'pointer', fontFamily: 'Outfit, sans-serif',
+                  <button onClick={() => setShowAddPro(false)} className="liquid-btn-secondary" style={{
+                    padding: '12px 18px',
                   }}>Cancel</button>
                 </motion.div>
               )}
@@ -580,9 +568,7 @@ const AccountPage = () => {
                 </p>
               </div>
             ) : (
-              <div style={{
-                background: 'rgba(26,26,46,0.5)',
-                border: '1px solid rgba(255,255,255,0.08)',
+              <div className="liquid-glass-card" style={{
                 borderRadius: '20px', overflow: 'hidden',
               }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse' }}>
@@ -633,10 +619,9 @@ const AccountPage = () => {
         {/* ── Security tab ── */}
         {tab === 'Security' && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <div style={{
-              background: 'rgba(26,26,46,0.6)',
-              border: '1px solid rgba(255,255,255,0.08)',
-              borderRadius: '24px', padding: '36px',
+            <div className="liquid-glass-card" style={{
+              padding: '36px',
+              borderRadius: '24px',
             }}>
               <h3 style={{ color: '#fff', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: '20px', marginBottom: '24px' }}>
                 <FiShield size={20} style={{ marginRight: '10px' }} />
@@ -652,15 +637,12 @@ const AccountPage = () => {
                     placeholder="••••••••"
                     value={currentPassword}
                     onChange={(e) => setCurrentPassword(e.target.value)}
+                    className="liquid-input"
                     style={{
-                      width: '100%', background: 'rgba(255,255,255,0.06)',
-                      border: '1.5px solid rgba(255,255,255,0.1)',
-                      borderRadius: '12px', color: '#fff',
-                      fontSize: '15px', fontFamily: 'Outfit, sans-serif',
-                      padding: '13px 16px', outline: 'none',
+                      padding: '13px 16px',
                     }}
                     onFocus={(e) => (e.target.style.borderColor = '#e50914')}
-                    onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.1)')}
+                    onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                   />
                 </div>
                 <div>
@@ -672,15 +654,12 @@ const AccountPage = () => {
                     placeholder="••••••••"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
+                    className="liquid-input"
                     style={{
-                      width: '100%', background: 'rgba(255,255,255,0.06)',
-                      border: '1.5px solid rgba(255,255,255,0.1)',
-                      borderRadius: '12px', color: '#fff',
-                      fontSize: '15px', fontFamily: 'Outfit, sans-serif',
-                      padding: '13px 16px', outline: 'none',
+                      padding: '13px 16px',
                     }}
                     onFocus={(e) => (e.target.style.borderColor = '#e50914')}
-                    onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.1)')}
+                    onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                   />
                 </div>
                 <div>
@@ -692,15 +671,12 @@ const AccountPage = () => {
                     placeholder="••••••••"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
+                    className="liquid-input"
                     style={{
-                      width: '100%', background: 'rgba(255,255,255,0.06)',
-                      border: '1.5px solid rgba(255,255,255,0.1)',
-                      borderRadius: '12px', color: '#fff',
-                      fontSize: '15px', fontFamily: 'Outfit, sans-serif',
-                      padding: '13px 16px', outline: 'none',
+                      padding: '13px 16px',
                     }}
                     onFocus={(e) => (e.target.style.borderColor = '#e50914')}
-                    onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.1)')}
+                    onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                   />
                 </div>
                 <motion.button
@@ -708,12 +684,11 @@ const AccountPage = () => {
                   whileTap={{ scale: 0.97 }}
                   onClick={handlePasswordChange}
                   disabled={updatingPass}
+                  className="liquid-btn-primary"
                   style={{
-                    background: updatingPass ? '#888' : '#e50914', color: '#fff',
-                    border: 'none', borderRadius: '12px',
-                    padding: '14px', fontSize: '15px',
-                    fontWeight: 700, cursor: 'pointer',
-                    fontFamily: 'Outfit, sans-serif', marginTop: '8px',
+                    background: updatingPass ? '#888' : '#e50914',
+                    justifyContent: 'center', padding: '14px',
+                    marginTop: '8px',
                   }}
                 >
                   {updatingPass ? 'Updating...' : 'Update Password'}

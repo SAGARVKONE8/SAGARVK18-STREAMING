@@ -97,22 +97,25 @@ const ContentRow = ({ title, contents = [], showAllLink }) => {
 const ArrowBtn = ({ direction, onClick }) => (
   <motion.button
     className="row-arrow-btn"
-    whileHover={{ scale: 1.12, background: 'rgba(229,9,20,0.15)' }}
-    whileTap={{ scale: 0.9 }}
+    whileHover={{ scale: 1.12, background: 'rgba(255,255,255,0.1)' }}
+    whileTap={{ scale: 0.92 }}
     onClick={onClick}
     style={{
       position: 'absolute',
       [direction === 'left' ? 'left' : 'right']: '2px',
       top: '50%', transform: 'translateY(-50%)',
       zIndex: 10,
-      background: 'rgba(10,10,15,0.88)',
-      backdropFilter: 'blur(12px)',
-      border: '1px solid rgba(255,255,255,0.14)',
+      background: 'rgba(15,15,28,0.55)',
+      backdropFilter: 'blur(24px) saturate(180%)',
+      WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+      border: '1px solid rgba(255,255,255,0.1)',
+      borderTopColor: 'rgba(255,255,255,0.16)',
       color: '#fff', borderRadius: '50%',
       width: '44px', height: '44px',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       cursor: 'pointer',
-      boxShadow: '0 4px 20px rgba(0,0,0,0.45)',
+      boxShadow: '0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06)',
+      transition: 'all 0.35s cubic-bezier(0.22, 1, 0.36, 1)',
     }}
   >
     {direction === 'left' ? <FiChevronLeft size={20} /> : <FiChevronRight size={20} />}

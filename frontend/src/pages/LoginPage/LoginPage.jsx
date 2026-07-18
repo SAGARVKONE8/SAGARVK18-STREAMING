@@ -49,7 +49,7 @@ const LoginPage = () => {
   return (
     <div style={{
       minHeight: '100vh',
-      background: '#0a0a0f',
+      background: '#080810',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       padding: '20px',
       position: 'relative', overflow: 'hidden',
@@ -138,17 +138,10 @@ const LoginPage = () => {
                 value={form.email} onChange={handleChange}
                 placeholder="your@email.com"
                 required
-                style={{
-                  width: '100%', paddingLeft: '42px',
-                  background: 'rgba(255,255,255,0.06)',
-                  border: '1.5px solid rgba(255,255,255,0.1)',
-                  borderRadius: '12px', color: '#fff',
-                  fontSize: '15px', fontFamily: 'Outfit, sans-serif',
-                  padding: '13px 14px 13px 42px',
-                  outline: 'none', transition: 'border-color 0.2s',
-                }}
-                onFocus={(e) => (e.target.style.borderColor = '#e50914')}
-                onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.1)')}
+                className="liquid-input"
+                style={{ paddingLeft: '42px' }}
+                onFocus={(e) => (e.target.style.borderColor = 'rgba(229,9,20,0.5)')}
+                onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
               />
             </div>
           </div>
@@ -168,17 +161,10 @@ const LoginPage = () => {
                 value={form.password} onChange={handleChange}
                 placeholder="Enter your password"
                 required
-                style={{
-                  width: '100%',
-                  background: 'rgba(255,255,255,0.06)',
-                  border: '1.5px solid rgba(255,255,255,0.1)',
-                  borderRadius: '12px', color: '#fff',
-                  fontSize: '15px', fontFamily: 'Outfit, sans-serif',
-                  padding: '13px 42px 13px 42px',
-                  outline: 'none', transition: 'border-color 0.2s',
-                }}
-                onFocus={(e) => (e.target.style.borderColor = '#e50914')}
-                onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.1)')}
+                className="liquid-input"
+                style={{ paddingLeft: '42px', paddingRight: '42px' }}
+                onFocus={(e) => (e.target.style.borderColor = 'rgba(229,9,20,0.5)')}
+                onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
               />
               <button
                 type="button"
@@ -209,19 +195,18 @@ const LoginPage = () => {
 
           {/* Submit */}
           <motion.button
-            whileHover={{ scale: loading ? 1 : 1.03, boxShadow: '0 0 28px rgba(229,9,20,0.45)' }}
+            whileHover={{ scale: loading ? 1 : 1.02, boxShadow: '0 8px 40px rgba(229,9,20,0.5)' }}
             whileTap={{ scale: 0.97 }}
             type="submit"
             disabled={loading}
+            className="liquid-btn-primary"
             style={{
-              background: loading ? 'rgba(229,9,20,0.5)' : '#e50914',
-              color: '#fff', border: 'none',
-              borderRadius: '14px', padding: '15px',
-              fontSize: '16px', fontWeight: 700,
+              width: '100%',
+              justifyContent: 'center',
+              padding: '15px',
+              fontSize: '16px',
+              opacity: loading ? 0.6 : 1,
               cursor: loading ? 'not-allowed' : 'pointer',
-              fontFamily: 'Outfit, sans-serif',
-              boxShadow: '0 4px 20px rgba(229,9,20,0.3)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
             }}
           >
             {loading ? (

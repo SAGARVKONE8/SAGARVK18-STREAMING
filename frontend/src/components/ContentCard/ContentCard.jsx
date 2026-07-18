@@ -53,9 +53,15 @@ const ContentCard = ({ content }) => {
       style={{
         position:   'relative',
         width:      '100%',
+        borderRadius: '18px',
+        overflow:   'hidden',
+        border:     '1px solid rgba(255,255,255,0.06)',
+        borderTopColor: 'rgba(255,255,255,0.1)',
+        background: 'rgba(14,14,28,0.5)',
         boxShadow:  hovered
-          ? '0 24px 60px rgba(0,0,0,0.65), 0 0 0 1.5px rgba(229,9,20,0.4)'
-          : '0 4px 16px rgba(0,0,0,0.3)',
+          ? '0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(229,9,20,0.2), inset 0 1px 0 rgba(255,255,255,0.06)'
+          : '0 4px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.04)',
+        transition: 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
       }}
     >
       <motion.div
@@ -80,22 +86,14 @@ const ContentCard = ({ content }) => {
             display: 'flex', flexDirection: 'column', gap: '4px',
           }}>
             {content.isPremium && (
-              <span style={{
-                background: 'linear-gradient(135deg, #f5a623, #e8960e)',
-                color: '#000', fontWeight: 800, fontSize: '9px',
-                padding: '3px 8px', borderRadius: '6px',
-                fontFamily: 'Outfit, sans-serif', letterSpacing: '0.5px',
-              }}>👑 PREMIUM</span>
+              <span className="liquid-badge liquid-badge-premium"
+                style={{ fontSize: '9px', padding: '3px 10px' }}
+              >👑 PREMIUM</span>
             )}
             {content.quality && (
-              <span style={{
-                background: content.quality === '4K'
-                  ? 'linear-gradient(135deg, rgba(114,9,183,0.9), rgba(86,11,173,0.9))'
-                  : 'rgba(0,100,200,0.85)',
-                color: '#fff', fontWeight: 700, fontSize: '9px',
-                padding: '3px 8px', borderRadius: '6px',
-                fontFamily: 'Outfit, sans-serif',
-              }}>{content.quality}</span>
+              <span className="liquid-badge liquid-badge-quality"
+                style={{ fontSize: '9px', padding: '3px 10px' }}
+              >{content.quality}</span>
             )}
           </div>
 
@@ -117,34 +115,35 @@ const ContentCard = ({ content }) => {
                 {/* Action buttons */}
                 <div style={{ display: 'flex', gap: '8px', marginBottom: '10px' }}>
                   <motion.button
-                    whileHover={{ scale: 1.08 }}
-                    whileTap={{ scale: 0.92 }}
+                    whileHover={{ scale: 1.06 }}
+                    whileTap={{ scale: 0.94 }}
                     onClick={handlePlay}
+                    className="liquid-btn-primary"
                     style={{
                       flex: 1,
-                      background: '#e50914', border: 'none',
-                      borderRadius: '8px', color: '#fff',
-                      fontWeight: 700, fontSize: '12px',
-                      cursor: 'pointer', padding: '8px',
-                      display: 'flex', alignItems: 'center',
-                      justifyContent: 'center', gap: '4px',
-                      fontFamily: 'Outfit, sans-serif',
+                      borderRadius: '10px',
+                      padding: '8px',
+                      fontSize: '12px',
+                      justifyContent: 'center',
                     }}
                   >
                     <FiPlay size={13} fill="#fff" /> Play
                   </motion.button>
 
                   <motion.button
-                    whileHover={{ scale: 1.08 }}
-                    whileTap={{ scale: 0.92 }}
+                    whileHover={{ scale: 1.06 }}
+                    whileTap={{ scale: 0.94 }}
                     onClick={handleWatchlist}
                     style={{
-                      background: 'rgba(255,255,255,0.14)',
-                      backdropFilter: 'blur(8px)',
-                      border: '1px solid rgba(255,255,255,0.2)',
-                      borderRadius: '8px', color: '#fff',
+                      background: 'rgba(255,255,255,0.1)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      border: '1px solid rgba(255,255,255,0.15)',
+                      borderTopColor: 'rgba(255,255,255,0.22)',
+                      borderRadius: '10px', color: '#fff',
                       cursor: 'pointer', padding: '8px 10px',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.08)',
                     }}
                   >
                     {inList
@@ -175,10 +174,11 @@ const ContentCard = ({ content }) => {
                   )}
                   <span style={{ color: '#666680', fontSize: '11px' }}>{content.releaseYear}</span>
                   {(content.genres?.[0] || content.genre) && (
-                    <span style={{
-                      background: 'rgba(229,9,20,0.22)', color: '#e50914',
-                      fontSize: '10px', padding: '2px 8px',
-                      borderRadius: '10px', fontWeight: 500,
+                    <span className="liquid-badge" style={{
+                      background: 'rgba(229,9,20,0.12)',
+                      borderColor: 'rgba(229,9,20,0.25)',
+                      color: '#e50914',
+                      fontSize: '10px', padding: '2px 10px',
                     }}>
                       {content.genres?.[0]?.name || content.genre}
                     </span>
@@ -190,14 +190,18 @@ const ContentCard = ({ content }) => {
         </div>
 
         {/* ── Below-poster info ── */}
-        {/* ── Below-poster info ── */}
-        <div className="card-info-container">
+        <div className="card-info-container" style={{
+          background: 'rgba(12,12,24,0.7)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          borderTop: '1px solid rgba(255,255,255,0.04)',
+        }}>
           <p
             className="card-title-text"
             style={{
-              margin: '0 0 4px', color: '#e0e0f0', fontWeight: 600,
+              margin: '0 0 4px', color: '#e8e8f4', fontWeight: 600,
               fontFamily: 'Outfit, sans-serif',
-              lineHeight: 1.3,
+              lineHeight: 1.3, letterSpacing: '0.2px',
               display: '-webkit-box', WebkitLineClamp: 1,
               WebkitBoxOrient: 'vertical', overflow: 'hidden',
             }}
@@ -217,7 +221,7 @@ const ContentCard = ({ content }) => {
                 {content.rating.toFixed(1)}
               </span>
             )}
-            <span className="card-meta-text" style={{ color: '#666680' }}>
+            <span className="card-meta-text" style={{ color: '#5a5a80' }}>
               {content.releaseYear}
             </span>
           </div>

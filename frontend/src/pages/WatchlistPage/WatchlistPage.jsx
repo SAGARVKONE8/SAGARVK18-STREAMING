@@ -54,7 +54,7 @@ const WatchlistPage = () => {
   if (loading) return <LoadingSpinner />
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0f' }}>
+    <div style={{ minHeight: '100vh', background: '#080810' }}>
       <Navbar />
 
       <div style={{ padding: '100px 4vw 60px' }}>
@@ -96,14 +96,23 @@ const WatchlistPage = () => {
                 <button
                   key={o.value}
                   onClick={() => setSort(o.value)}
+                  className="liquid-badge"
                   style={{
-                    background: sort === o.value ? '#e50914' : 'rgba(26,26,46,0.7)',
-                    color: sort === o.value ? '#fff' : '#b3b3cc',
-                    border: sort === o.value ? '1px solid #e50914' : '1px solid rgba(255,255,255,0.1)',
-                    borderRadius: '24px', padding: '8px 18px',
-                    fontFamily: 'Outfit, sans-serif', fontWeight: 600,
-                    fontSize: '13px', cursor: 'pointer',
-                    transition: 'all 0.2s',
+                    background: sort === o.value
+                      ? 'linear-gradient(135deg, var(--accent-red), #ff2d3a)'
+                      : 'rgba(255,255,255,0.04)',
+                    color: sort === o.value ? '#fff' : '#a0a0c0',
+                    borderColor: sort === o.value
+                      ? 'rgba(229,9,20,0.4)'
+                      : 'rgba(255,255,255,0.08)',
+                    padding: '8px 18px',
+                    fontSize: '13px',
+                    cursor: 'pointer',
+                    boxShadow: sort === o.value
+                      ? '0 4px 24px rgba(229,9,20,0.25), inset 0 1px 0 rgba(255,255,255,0.15)'
+                      : 'inset 0 1px 0 rgba(255,255,255,0.04)',
+                    backdropFilter: 'blur(12px)',
+                    transition: 'all 0.35s cubic-bezier(0.22, 1, 0.36, 1)',
                   }}
                 >
                   {o.label}
@@ -129,12 +138,9 @@ const WatchlistPage = () => {
             </p>
             <button
               onClick={() => navigate('/select-profile')}
+              className="liquid-btn-primary"
               style={{
-                background: '#e50914', color: '#fff',
-                border: 'none', borderRadius: '12px',
                 padding: '12px 28px', fontSize: '15px',
-                fontWeight: 700, cursor: 'pointer',
-                fontFamily: 'Outfit, sans-serif',
               }}
             >Select Profile</button>
           </div>
@@ -165,31 +171,23 @@ const WatchlistPage = () => {
             </p>
             <div style={{ display: 'flex', gap: '12px' }}>
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: '0 0 24px rgba(229,9,20,0.4)' }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
                 onClick={() => navigate('/search')}
+                className="liquid-btn-primary"
                 style={{
-                  display: 'flex', alignItems: 'center', gap: '8px',
-                  background: '#e50914', color: '#fff',
-                  border: 'none', borderRadius: '12px',
                   padding: '13px 28px', fontSize: '15px',
-                  fontWeight: 700, cursor: 'pointer',
-                  fontFamily: 'Outfit, sans-serif',
                 }}
               >
                 <FiSearch size={17} /> Discover Content
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
                 onClick={() => navigate('/home')}
+                className="liquid-btn-secondary"
                 style={{
-                  display: 'flex', alignItems: 'center', gap: '8px',
-                  background: 'rgba(255,255,255,0.08)',
-                  color: '#fff', border: '1px solid rgba(255,255,255,0.15)',
-                  borderRadius: '12px', padding: '13px 28px',
-                  fontSize: '15px', fontWeight: 600,
-                  cursor: 'pointer', fontFamily: 'Outfit, sans-serif',
+                  padding: '13px 28px', fontSize: '15px',
                 }}
               >
                 <FiPlay size={17} /> Browse Home
@@ -218,14 +216,16 @@ const WatchlistPage = () => {
                       onClick={() => handleRemove(c)}
                       style={{
                         position: 'absolute', top: '8px', right: '8px',
-                        background: 'rgba(10,10,15,0.85)',
-                        backdropFilter: 'blur(8px)',
-                        border: '1px solid rgba(229,9,20,0.3)',
+                        background: 'rgba(15,15,28,0.75)',
+                        backdropFilter: 'blur(12px)',
+                        WebkitBackdropFilter: 'blur(12px)',
+                        border: '1px solid rgba(229,9,20,0.25)',
                         borderRadius: '50%',
                         width: '32px', height: '32px',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         color: '#e50914', cursor: 'pointer',
                         zIndex: 5,
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
                       }}
                     >
                       <FiTrash2 size={14} />

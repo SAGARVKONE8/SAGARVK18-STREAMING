@@ -86,7 +86,7 @@ const SearchPage = () => {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0f' }}>
+    <div style={{ minHeight: '100vh', background: '#080810' }}>
       <Navbar />
 
       <div style={{ padding: '100px 4vw 60px' }}>
@@ -119,19 +119,17 @@ const SearchPage = () => {
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search movies, series, genres..."
             autoFocus
+            className="liquid-input"
             style={{
-              width: '100%',
-              background: 'rgba(26,26,46,0.8)',
-              backdropFilter: 'blur(16px)',
-              border: '1.5px solid rgba(255,255,255,0.1)',
-              borderRadius: '18px', color: '#fff',
-              fontSize: '17px', fontFamily: 'Outfit, sans-serif',
+              borderRadius: '20px',
+              fontSize: '17px',
               padding: '18px 50px 18px 54px',
-              outline: 'none', transition: 'border-color 0.25s',
-              boxShadow: '0 8px 30px rgba(0,0,0,0.3)',
+              backdropFilter: 'blur(24px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+              boxShadow: '0 8px 40px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06)',
             }}
-            onFocus={(e) => (e.target.style.borderColor = '#e50914')}
-            onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.1)')}
+            onFocus={(e) => (e.target.style.borderColor = 'rgba(229,9,20,0.5)')}
+            onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
           />
           {query && (
             <motion.button
@@ -154,26 +152,30 @@ const SearchPage = () => {
         </motion.div>
 
         {/* ── Type filter chips ── */}
-        <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: '8px', marginBottom: '20px', flexWrap: 'wrap' }}>
           {TYPES.map((t) => (
             <motion.button
               key={t.value}
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
               onClick={() => setType(t.value)}
+              className="liquid-badge"
               style={{
                 background: type === t.value
-                  ? '#e50914'
-                  : 'rgba(26,26,46,0.8)',
-                color: type === t.value ? '#fff' : '#b3b3cc',
-                border: type === t.value
-                  ? '1.5px solid #e50914'
-                  : '1.5px solid rgba(255,255,255,0.1)',
-                borderRadius: '24px', padding: '8px 20px',
-                fontFamily: 'Outfit, sans-serif', fontWeight: 600,
-                fontSize: '14px', cursor: 'pointer',
-                transition: 'all 0.2s',
-                boxShadow: type === t.value ? '0 0 16px rgba(229,9,20,0.3)' : 'none',
+                  ? 'linear-gradient(135deg, var(--accent-red), #ff2d3a)'
+                  : 'rgba(255,255,255,0.04)',
+                color: type === t.value ? '#fff' : '#a0a0c0',
+                borderColor: type === t.value
+                  ? 'rgba(229,9,20,0.4)'
+                  : 'rgba(255,255,255,0.08)',
+                padding: '8px 22px',
+                fontSize: '14px',
+                cursor: 'pointer',
+                boxShadow: type === t.value
+                  ? '0 4px 24px rgba(229,9,20,0.25), inset 0 1px 0 rgba(255,255,255,0.15)'
+                  : 'inset 0 1px 0 rgba(255,255,255,0.04)',
+                backdropFilter: 'blur(12px)',
+                transition: 'all 0.35s cubic-bezier(0.22, 1, 0.36, 1)',
               }}
             >
               {t.label}
@@ -186,28 +188,31 @@ const SearchPage = () => {
           <div className="chips-scrollable">
             <button
               onClick={() => setGenre('')}
+              className="liquid-badge"
               style={{
-                background: genre === '' ? 'rgba(245,166,35,0.2)' : 'transparent',
-                color: genre === '' ? '#f5a623' : '#666680',
-                border: genre === '' ? '1px solid rgba(245,166,35,0.4)' : '1px solid rgba(255,255,255,0.08)',
-                borderRadius: '20px', padding: '6px 16px',
-                fontFamily: 'Inter, sans-serif', fontSize: '13px',
-                cursor: 'pointer', fontWeight: genre === '' ? 600 : 400,
-                transition: 'all 0.2s',
+                background: genre === '' ? 'rgba(245,166,35,0.15)' : 'rgba(255,255,255,0.03)',
+                color: genre === '' ? '#f5a623' : '#5a5a80',
+                borderColor: genre === '' ? 'rgba(245,166,35,0.3)' : 'rgba(255,255,255,0.06)',
+                padding: '6px 16px',
+                fontSize: '13px',
+                cursor: 'pointer',
+                backdropFilter: 'blur(8px)',
               }}
             >All Genres</button>
             {genres.slice(0, 20).map((g) => (
               <button
                 key={g.id || g.name}
                 onClick={() => setGenre(genre === g.name ? '' : g.name)}
+                className="liquid-badge"
                 style={{
-                  background: genre === g.name ? 'rgba(245,166,35,0.18)' : 'transparent',
-                  color: genre === g.name ? '#f5a623' : '#666680',
-                  border: genre === g.name ? '1px solid rgba(245,166,35,0.35)' : '1px solid rgba(255,255,255,0.07)',
-                  borderRadius: '20px', padding: '6px 14px',
-                  fontFamily: 'Inter, sans-serif', fontSize: '13px',
-                  cursor: 'pointer', fontWeight: genre === g.name ? 600 : 400,
-                  transition: 'all 0.2s',
+                  background: genre === g.name ? 'rgba(245,166,35,0.15)' : 'rgba(255,255,255,0.03)',
+                  color: genre === g.name ? '#f5a623' : '#a0a0c0',
+                  borderColor: genre === g.name ? 'rgba(245,166,35,0.3)' : 'rgba(255,255,255,0.06)',
+                  padding: '6px 14px',
+                  fontSize: '13px',
+                  cursor: 'pointer',
+                  backdropFilter: 'blur(8px)',
+                  transition: 'all 0.35s var(--ease-liquid)',
                 }}
               >{g.name || g}</button>
             ))}

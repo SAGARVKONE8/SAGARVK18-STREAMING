@@ -135,7 +135,7 @@ export default function AdminPage() {
   ];
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a0f', color: '#fff' }}>
+    <div style={{ minHeight: '100vh', background: '#080810', color: '#fff' }}>
       <Navbar />
       <div style={{ padding: '80px 4vw 40px' }}>
 
@@ -156,34 +156,36 @@ export default function AdminPage() {
           {stats.map((stat, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
+              className="liquid-glass-card"
               style={{
-                background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(10px)',
-                border: `1px solid ${stat.color}33`, borderRadius: '16px', padding: '24px',
+                border: `1px solid ${stat.color}22`, borderRadius: '16px', padding: '24px',
                 display: 'flex', alignItems: 'center', gap: '16px'
               }}>
               <div style={{
                 width: '48px', height: '48px', borderRadius: '12px',
-                background: `${stat.color}22`, display: 'flex', alignItems: 'center',
-                justifyContent: 'center', color: stat.color, fontSize: '22px'
+                background: `${stat.color}15`, display: 'flex', alignItems: 'center',
+                justifyContent: 'center', color: stat.color, fontSize: '22px',
+                border: `1px solid ${stat.color}33`,
               }}>{stat.icon}</div>
               <div>
                 <div style={{ fontSize: '2rem', fontWeight: 800, fontFamily: 'Outfit', color: stat.color }}>{stat.value}</div>
-                <div style={{ fontSize: '0.85rem', color: '#888' }}>{stat.label}</div>
+                <div style={{ fontSize: '0.85rem', color: '#a0a0c0' }}>{stat.label}</div>
               </div>
             </motion.div>
           ))}
         </div>
 
         {/* Tabs */}
-        <div style={{ display: 'flex', gap: '4px', marginBottom: '24px', background: 'rgba(255,255,255,0.05)', padding: '4px', borderRadius: '12px', width: 'fit-content' }}>
+        <div style={{ display: 'flex', gap: '4px', marginBottom: '24px', background: 'rgba(255,255,255,0.03)', padding: '4px', borderRadius: '9999px', border: '1px solid rgba(255,255,255,0.06)', width: 'fit-content', backdropFilter: 'blur(10px)' }}>
           {['content', 'users'].map(tab => (
             <button key={tab} onClick={() => setActiveTab(tab)}
               style={{
-                padding: '10px 24px', borderRadius: '8px', border: 'none', cursor: 'pointer',
-                background: activeTab === tab ? '#e50914' : 'transparent',
-                color: activeTab === tab ? '#fff' : '#888',
+                padding: '10px 24px', borderRadius: '9999px', border: 'none', cursor: 'pointer',
+                background: activeTab === tab ? 'linear-gradient(135deg, var(--accent-red), #ff2d3a)' : 'transparent',
+                color: activeTab === tab ? '#fff' : '#a0a0c0',
                 fontFamily: 'Outfit', fontWeight: 600, fontSize: '0.9rem',
-                textTransform: 'capitalize', transition: 'all 0.2s'
+                textTransform: 'capitalize', transition: 'all 0.35s var(--ease-liquid)',
+                boxShadow: activeTab === tab ? '0 4px 20px rgba(229,9,20,0.25), inset 0 1px 0 rgba(255,255,255,0.15)' : 'none',
               }}>
               {tab === 'content' ? '🎬 Content' : '👥 Users'}
             </button>
@@ -195,21 +197,27 @@ export default function AdminPage() {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
               <h2 style={{ fontFamily: 'Outfit', fontWeight: 700 }}>Content Library ({contents.length})</h2>
-              <button onClick={openAddModal} style={{
-                display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 20px',
-                background: '#e50914', border: 'none', borderRadius: '8px', color: '#fff',
-                fontFamily: 'Outfit', fontWeight: 600, cursor: 'pointer', fontSize: '0.9rem'
+              <button onClick={openAddModal} className="liquid-btn-primary" style={{
+                padding: '10px 20px', fontSize: '0.9rem',
               }}>
                 <FiPlus /> Add Content
               </button>
             </div>
 
-            <div className="admin-table-container">
+            <div className="admin-table-container" style={{
+              background: 'rgba(14,14,28,0.5)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              border: '1px solid rgba(255,255,255,0.06)',
+              borderRadius: '20px',
+              overflow: 'hidden',
+              boxShadow: 'var(--shadow-glass)',
+            }}>
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
-                  <tr style={{ background: 'rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                  <tr style={{ background: 'rgba(255,255,255,0.03)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
                     {['Poster', 'Title', 'Type', 'Year', 'Rating', 'Language', 'Premium', 'Actions'].map(h => (
-                      <th key={h} style={{ padding: '14px 16px', textAlign: 'left', color: '#888', fontFamily: 'Inter', fontSize: '0.8rem', fontWeight: 600, whiteSpace: 'nowrap' }}>{h}</th>
+                      <th key={h} style={{ padding: '14px 16px', textAlign: 'left', color: '#a0a0c0', fontFamily: 'Inter', fontSize: '0.8rem', fontWeight: 600, whiteSpace: 'nowrap' }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -217,8 +225,8 @@ export default function AdminPage() {
                   {contents.map((content, i) => (
                     <motion.tr key={content.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}
                       transition={{ delay: i * 0.02 }}
-                      style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', transition: 'background 0.2s' }}
-                      onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.03)'}
+                      style={{ borderBottom: '1px solid rgba(255,255,255,0.04)', transition: 'background 0.35s var(--ease-liquid)' }}
+                      onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.04)'}
                       onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
                       <td style={{ padding: '12px 16px' }}>
                         <img src={content.posterUrl} alt={content.title}
@@ -229,32 +237,33 @@ export default function AdminPage() {
                         <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{content.title}</div>
                       </td>
                       <td style={{ padding: '12px 16px' }}>
-                        <span style={{
-                          padding: '4px 10px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 600,
-                          background: content.type === 'MOVIE' ? '#e5091422' : '#6c63ff22',
-                          color: content.type === 'MOVIE' ? '#e50914' : '#6c63ff'
+                        <span className="liquid-badge" style={{
+                          padding: '4px 10px', fontSize: '0.75rem',
+                          background: content.type === 'MOVIE' ? 'rgba(229,9,20,0.1)' : 'rgba(108,99,255,0.1)',
+                          borderColor: content.type === 'MOVIE' ? 'rgba(229,9,20,0.25)' : 'rgba(108,99,255,0.25)',
+                          color: content.type === 'MOVIE' ? '#e50914' : '#9b8fff'
                         }}>{content.type}</span>
                       </td>
-                      <td style={{ padding: '12px 16px', color: '#aaa' }}>{content.releaseYear}</td>
+                      <td style={{ padding: '12px 16px', color: '#a0a0c0' }}>{content.releaseYear}</td>
                       <td style={{ padding: '12px 16px' }}>
                         <span style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#f5a623' }}>
-                          <FiStar size={12} /> {content.rating?.toFixed(1) || 'N/A'}
+                          <FiStar size={12} fill="#f5a623" /> {content.rating?.toFixed(1) || 'N/A'}
                         </span>
                       </td>
-                      <td style={{ padding: '12px 16px', color: '#aaa' }}>{content.language}</td>
+                      <td style={{ padding: '12px 16px', color: '#a0a0c0' }}>{content.language}</td>
                       <td style={{ padding: '12px 16px' }}>
-                        <span style={{ color: (content.premium || content.isPremium) ? '#f5a623' : '#888', fontWeight: 600, fontSize: '0.8rem' }}>
+                        <span style={{ color: (content.premium || content.isPremium) ? '#f5a623' : '#a0a0c0', fontWeight: 600, fontSize: '0.8rem' }}>
                           {(content.premium || content.isPremium) ? '👑 Yes' : 'No'}
                         </span>
                       </td>
                       <td style={{ padding: '12px 16px' }}>
                         <div style={{ display: 'flex', gap: '8px' }}>
                           <button onClick={() => openEditModal(content)}
-                            style={{ background: '#f5a62322', border: 'none', padding: '7px', borderRadius: '8px', color: '#f5a623', cursor: 'pointer', display: 'flex' }}>
+                            style={{ background: 'rgba(245,166,35,0.12)', border: '1px solid rgba(245,166,35,0.2)', padding: '7px', borderRadius: '8px', color: '#f5a623', cursor: 'pointer', display: 'flex' }}>
                             <FiEdit2 size={14} />
                           </button>
                           <button onClick={() => setDeleteConfirm(content.id)}
-                            style={{ background: '#e5091422', border: 'none', padding: '7px', borderRadius: '8px', color: '#e50914', cursor: 'pointer', display: 'flex' }}>
+                            style={{ background: 'rgba(229,9,20,0.12)', border: '1px solid rgba(229,9,20,0.2)', padding: '7px', borderRadius: '8px', color: '#e50914', cursor: 'pointer', display: 'flex' }}>
                             <FiTrash2 size={14} />
                           </button>
                         </div>
@@ -322,9 +331,17 @@ export default function AdminPage() {
               display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '20px'
             }}
             onClick={e => { if (e.target === e.currentTarget) setShowModal(false); }}>
-            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="admin-modal-card">
+            <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 220 }}
+              className="admin-modal-card liquid-glass-dense"
+              style={{
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderTopColor: 'rgba(255,255,255,0.15)',
+                borderRadius: '24px',
+                boxShadow: 'var(--shadow-lg)',
+              }}
+            >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
                 <h2 style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '1.4rem' }}>
                   {editingContent ? '✏️ Edit Content' : '➕ Add New Content'}
@@ -353,11 +370,12 @@ export default function AdminPage() {
                         {...rest}
                         value={form[key]}
                         onChange={e => setForm(p => ({ ...p, [key]: rest.type === 'number' ? parseFloat(e.target.value) || e.target.value : e.target.value }))}
+                        className="liquid-input"
                         style={{
-                          background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)',
-                          borderRadius: '10px', padding: '10px 14px', color: '#fff', fontFamily: 'Inter',
-                          fontSize: '0.9rem', outline: 'none'
+                          padding: '10px 14px',
                         }}
+                        onFocus={(e) => (e.target.style.borderColor = 'rgba(229,9,20,0.5)')}
+                        onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                       />
                     </div>
                   ))}
@@ -392,7 +410,10 @@ export default function AdminPage() {
                     <label style={{ fontSize: '0.8rem', color: '#888', display: 'block', marginBottom: '6px' }}>{label}</label>
                     <input type="url" value={form[key]} placeholder="https://"
                       onChange={e => setForm(p => ({ ...p, [key]: e.target.value }))}
-                      style={{ width: '100%', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '10px', padding: '10px 14px', color: '#fff', fontFamily: 'Inter', fontSize: '0.9rem', outline: 'none', boxSizing: 'border-box' }}
+                      className="liquid-input"
+                      style={{ padding: '10px 14px' }}
+                      onFocus={(e) => (e.target.style.borderColor = 'rgba(229,9,20,0.5)')}
+                      onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                     />
                   </div>
                 ))}
@@ -402,7 +423,10 @@ export default function AdminPage() {
                   <label style={{ fontSize: '0.8rem', color: '#888', display: 'block', marginBottom: '6px' }}>Description</label>
                   <textarea value={form.description} rows={3}
                     onChange={e => setForm(p => ({ ...p, description: e.target.value }))}
-                    style={{ width: '100%', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '10px', padding: '10px 14px', color: '#fff', fontFamily: 'Inter', fontSize: '0.9rem', resize: 'vertical', outline: 'none', boxSizing: 'border-box' }}
+                    className="liquid-input"
+                    style={{ padding: '10px 14px', resize: 'vertical', minHeight: '80px' }}
+                    onFocus={(e) => (e.target.style.borderColor = 'rgba(229,9,20,0.5)')}
+                    onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                   />
                 </div>
 
@@ -424,11 +448,13 @@ export default function AdminPage() {
 
                 <div style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>
                   <button type="button" onClick={() => setShowModal(false)}
-                    style={{ flex: 1, padding: '12px', background: 'rgba(255,255,255,0.08)', border: 'none', borderRadius: '10px', color: '#fff', fontFamily: 'Outfit', fontWeight: 600, cursor: 'pointer' }}>
+                    className="liquid-btn-secondary"
+                    style={{ flex: 1, padding: '12px', justifyContent: 'center' }}>
                     Cancel
                   </button>
                   <button type="submit" disabled={submitting}
-                    style={{ flex: 2, padding: '12px', background: submitting ? '#888' : '#e50914', border: 'none', borderRadius: '10px', color: '#fff', fontFamily: 'Outfit', fontWeight: 700, cursor: 'pointer', fontSize: '1rem' }}>
+                    className="liquid-btn-primary"
+                    style={{ flex: 2, padding: '12px', justifyContent: 'center', opacity: submitting ? 0.7 : 1 }}>
                     {submitting ? 'Saving...' : editingContent ? '✅ Update Content' : '🎬 Create Content'}
                   </button>
                 </div>
@@ -443,18 +469,21 @@ export default function AdminPage() {
         {deleteConfirm && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1001 }}>
-            <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 0.9 }}
-              style={{ background: '#1a1a2e', border: '1px solid rgba(229,9,20,0.4)', borderRadius: '16px', padding: '32px', textAlign: 'center', maxWidth: '360px' }}>
+            <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} exit={{ scale: 0.95 }}
+              className="liquid-glass-card"
+              style={{ padding: '32px', textAlign: 'center', maxWidth: '360px', borderRadius: '24px' }}>
               <div style={{ fontSize: '2.5rem', marginBottom: '12px' }}>🗑️</div>
               <h3 style={{ fontFamily: 'Outfit', fontWeight: 700, marginBottom: '8px' }}>Delete Content?</h3>
-              <p style={{ color: '#888', marginBottom: '24px', fontFamily: 'Inter', fontSize: '0.9rem' }}>This action cannot be undone.</p>
+              <p style={{ color: '#a0a0c0', marginBottom: '24px', fontFamily: 'Inter', fontSize: '0.9rem' }}>This action cannot be undone.</p>
               <div style={{ display: 'flex', gap: '12px' }}>
                 <button onClick={() => setDeleteConfirm(null)}
-                  style={{ flex: 1, padding: '12px', background: 'rgba(255,255,255,0.08)', border: 'none', borderRadius: '10px', color: '#fff', fontFamily: 'Outfit', fontWeight: 600, cursor: 'pointer' }}>
+                  className="liquid-btn-secondary"
+                  style={{ flex: 1, padding: '12px', justifyContent: 'center' }}>
                   Cancel
                 </button>
                 <button onClick={() => handleDelete(deleteConfirm)}
-                  style={{ flex: 1, padding: '12px', background: '#e50914', border: 'none', borderRadius: '10px', color: '#fff', fontFamily: 'Outfit', fontWeight: 700, cursor: 'pointer' }}>
+                  className="liquid-btn-primary"
+                  style={{ flex: 1, padding: '12px', justifyContent: 'center' }}>
                   Delete
                 </button>
               </div>
