@@ -324,10 +324,7 @@ export default function AdminPage() {
             onClick={e => { if (e.target === e.currentTarget) setShowModal(false); }}>
             <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              style={{
-                background: '#13131a', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '20px',
-                padding: '32px', width: '100%', maxWidth: '700px', maxHeight: '90vh', overflowY: 'auto'
-              }}>
+              className="admin-modal-card">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
                 <h2 style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '1.4rem' }}>
                   {editingContent ? '✏️ Edit Content' : '➕ Add New Content'}

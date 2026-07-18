@@ -91,7 +91,7 @@ const WatchlistPage = () => {
 
           {/* Sort options */}
           {items.length > 0 && (
-            <div style={{ display: 'flex', gap: '8px' }}>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
               {SORT_OPTIONS.map((o) => (
                 <button
                   key={o.value}
@@ -197,13 +197,7 @@ const WatchlistPage = () => {
             </div>
           </motion.div>
         ) : (
-          <motion.div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(175px, 1fr))',
-              gap: '18px',
-            }}
-          >
+          <motion.div className="responsive-grid">
             <AnimatePresence>
               {sorted.map((item, i) => {
                 const c = item.content || item

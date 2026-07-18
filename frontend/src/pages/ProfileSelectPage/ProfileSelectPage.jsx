@@ -280,13 +280,7 @@ const ProfileSelectPage = () => {
               exit={{ scale: 0.85, opacity: 0 }}
               transition={{ type: 'spring', damping: 25, stiffness: 320 }}
               onClick={(e) => e.stopPropagation()}
-              style={{
-                background: '#1a1a2e',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: '24px', padding: '40px',
-                width: '100%', maxWidth: '420px',
-                boxShadow: '0 32px 80px rgba(0,0,0,0.6)',
-              }}
+              className="add-profile-modal-card"
             >
               <h2 style={{
                 fontFamily: 'Outfit, sans-serif', fontWeight: 700,

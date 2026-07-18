@@ -183,9 +183,7 @@ const SearchPage = () => {
 
         {/* ── Genre chips ── */}
         {genres.length > 0 && (
-          <div style={{
-            display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '36px',
-          }}>
+          <div className="chips-scrollable">
             <button
               onClick={() => setGenre('')}
               style={{
@@ -218,14 +216,8 @@ const SearchPage = () => {
 
         {/* ── Results ── */}
         {loading ? (
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(175px, 1fr))',
-            gap: '16px',
-          }}>
-            {Array.from({ length: 12 }).map((_, i) => (
-              <SkeletonCard key={i} width={175} />
-            ))}
+          <div className="responsive-grid">
+            <SkeletonCard count={12} width="100%" />
           </div>
         ) : results.length > 0 ? (
           <>
@@ -236,13 +228,7 @@ const SearchPage = () => {
               {results.length} title{results.length !== 1 ? 's' : ''} found
               {query && ` for "${query}"`}
             </p>
-            <motion.div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(175px, 1fr))',
-                gap: '16px',
-              }}
-            >
+            <motion.div className="responsive-grid">
               <AnimatePresence>
                 {results.map((item, i) => (
                   <motion.div

@@ -347,7 +347,7 @@ const PlayerPage = () => {
               </div>
 
               {/* Control row */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <div className="player-control-row">
                 {/* Seek back */}
                 <motion.button
                   whileHover={{ scale: 1.1 }}
@@ -395,10 +395,7 @@ const PlayerPage = () => {
                   type="range" min={0} max={1} step={0.02}
                   value={muted ? 0 : volume}
                   onChange={(e) => { setVolume(Number(e.target.value)); setMuted(false) }}
-                  style={{
-                    width: '80px', accentColor: '#e50914',
-                    cursor: 'pointer',
-                  }}
+                  className="player-volume-slider"
                 />
 
                 {/* Time */}

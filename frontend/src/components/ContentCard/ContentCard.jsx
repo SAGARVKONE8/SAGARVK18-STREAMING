@@ -46,20 +46,16 @@ const ContentCard = ({ content }) => {
 
   return (
     <motion.div
+      className="content-card-responsive"
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
       onClick={() => navigate(`/content/${content.id}`)}
       style={{
         position:   'relative',
-        width:      '175px',
-        cursor:     'pointer',
-        borderRadius: '14px',
-        overflow:   'hidden',
-        background: '#1a1a2e',
+        width:      '100%',
         boxShadow:  hovered
           ? '0 24px 60px rgba(0,0,0,0.65), 0 0 0 1.5px rgba(229,9,20,0.4)'
           : '0 4px 16px rgba(0,0,0,0.3)',
-        transition: 'box-shadow 0.3s ease',
       }}
     >
       <motion.div
@@ -194,25 +190,36 @@ const ContentCard = ({ content }) => {
         </div>
 
         {/* ── Below-poster info ── */}
-        <div style={{ padding: '10px 12px 13px' }}>
-          <p style={{
-            margin: '0 0 4px', color: '#e0e0f0', fontWeight: 600,
-            fontSize: '13px', fontFamily: 'Outfit, sans-serif',
-            lineHeight: 1.3,
-            display: '-webkit-box', WebkitLineClamp: 1,
-            WebkitBoxOrient: 'vertical', overflow: 'hidden',
-          }}>{content.title}</p>
+        {/* ── Below-poster info ── */}
+        <div className="card-info-container">
+          <p
+            className="card-title-text"
+            style={{
+              margin: '0 0 4px', color: '#e0e0f0', fontWeight: 600,
+              fontFamily: 'Outfit, sans-serif',
+              lineHeight: 1.3,
+              display: '-webkit-box', WebkitLineClamp: 1,
+              WebkitBoxOrient: 'vertical', overflow: 'hidden',
+            }}
+          >
+            {content.title}
+          </p>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             {content.rating && (
-              <span style={{
-                color: '#f5a623', fontSize: '11px', fontWeight: 600,
-                display: 'flex', alignItems: 'center', gap: '3px',
-              }}>
+              <span
+                className="card-meta-text"
+                style={{
+                  color: '#f5a623', fontWeight: 600,
+                  display: 'flex', alignItems: 'center', gap: '3px',
+                }}
+              >
                 <FiStar size={10} fill="#f5a623" />
                 {content.rating.toFixed(1)}
               </span>
             )}
-            <span style={{ color: '#666680', fontSize: '11px' }}>{content.releaseYear}</span>
+            <span className="card-meta-text" style={{ color: '#666680' }}>
+              {content.releaseYear}
+            </span>
           </div>
         </div>
       </motion.div>

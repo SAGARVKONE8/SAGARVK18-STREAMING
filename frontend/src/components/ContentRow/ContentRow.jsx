@@ -75,6 +75,7 @@ const ContentRow = ({ title, contents = [], showAllLink }) => {
           {contents.map((item, idx) => (
             <motion.div
               key={item.id}
+              className="row-item-responsive"
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -95,6 +96,7 @@ const ContentRow = ({ title, contents = [], showAllLink }) => {
 
 const ArrowBtn = ({ direction, onClick }) => (
   <motion.button
+    className="row-arrow-btn"
     whileHover={{ scale: 1.12, background: 'rgba(229,9,20,0.15)' }}
     whileTap={{ scale: 0.9 }}
     onClick={onClick}

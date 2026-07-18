@@ -27,7 +27,7 @@ const SkeletonCard = ({ count = 1, width = 175 }) => (
           overflow: 'hidden',
           background: '#1a1a2e',
           flexShrink: 0,
-          width: `${width}px`,
+          width: typeof width === 'number' ? `${width}px` : width,
         }}
       >
         {/* Poster placeholder */}
@@ -56,13 +56,13 @@ export const SkeletonBanner = () => (
         100% { background-position:  200% 0; }
       }
     `}</style>
-    <div style={{
-      width: '100%',
-      height: 'min(100vh, 850px)',
-      minHeight: '600px',
-      ...shimmer,
-      borderRadius: 0,
-    }} />
+    <div
+      className="hero-banner-responsive"
+      style={{
+        ...shimmer,
+        borderRadius: 0,
+      }}
+    />
   </>
 )
 
