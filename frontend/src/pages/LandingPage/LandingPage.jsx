@@ -66,7 +66,7 @@ const FEATURES = [
   },
 ]
 
-const FloatingPoster = ({ delay, duration, left, top, seed }) => (
+const FloatingPoster = ({ delay, duration, left, top, url }) => (
   <motion.div
     initial={{ opacity: 0, y: 40 }}
     animate={{ opacity: 0.15, y: 0 }}
@@ -84,7 +84,7 @@ const FloatingPoster = ({ delay, duration, left, top, seed }) => (
     }}
   >
     <img
-      src={`https://picsum.photos/seed/${seed}/120/180`}
+      src={url}
       alt=""
       style={{ width: '100%', display: 'block', borderRadius: '12px' }}
     />
@@ -164,11 +164,11 @@ const LandingPage = () => {
 
         {/* Floating posters */}
         {[
-          { delay: 0.3, duration: 5,   left: '3%',  top: '15%', seed: 'movie1' },
-          { delay: 0.6, duration: 6.5, left: '10%', top: '60%', seed: 'movie2' },
-          { delay: 0.2, duration: 4.5, left: '80%', top: '20%', seed: 'movie3' },
-          { delay: 0.8, duration: 7,   left: '88%', top: '60%', seed: 'movie4' },
-          { delay: 1.0, duration: 5.5, left: '70%', top: '70%', seed: 'movie5' },
+          { delay: 0.3, duration: 5,   left: '3%',  top: '15%', url: 'https://image.tmdb.org/t/p/w500/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg' }, // Inception
+          { delay: 0.6, duration: 6.5, left: '10%', top: '60%', url: 'https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg' }, // The Dark Knight
+          { delay: 0.2, duration: 4.5, left: '80%', top: '20%', url: 'https://image.tmdb.org/t/p/w500/3xnWaLQjelJDDF7LT1WBo6f4BRe.jpg' }, // Breaking Bad
+          { delay: 0.8, duration: 7,   left: '88%', top: '60%', url: 'https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg' }, // Avengers: Endgame
+          { delay: 1.0, duration: 5.5, left: '70%', top: '70%', url: 'https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg' }, // Stranger Things
         ].map((p, i) => <FloatingPoster key={i} {...p} />)}
 
         {/* Hero content */}
