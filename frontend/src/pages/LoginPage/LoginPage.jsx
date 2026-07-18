@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { FiMail, FiLock, FiEye, FiEyeOff, FiAlertCircle } from 'react-icons/fi'
 import { useAuth } from '../../context/AuthContext'
 import toast from 'react-hot-toast'
+import SagarSymbol from '../../components/UI/SagarSymbol'
 
 const LoginPage = () => {
   const { login } = useAuth()
@@ -78,17 +79,20 @@ const LoginPage = () => {
         <Link to="/" style={{ textDecoration: 'none' }}>
           <motion.div
             whileHover={{ scale: 1.04 }}
-            style={{ textAlign: 'center', marginBottom: '32px' }}
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', marginBottom: '24px' }}
           >
-            <span style={{
-              fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: '28px',
-              background: 'linear-gradient(135deg, #e50914, #f5a623)',
-              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-              letterSpacing: '1px',
-            }}>SAGARVK18</span>
-            <p style={{ color: '#666680', fontSize: '12px', fontFamily: 'Outfit, sans-serif', letterSpacing: '3px', marginTop: '4px' }}>
-              STREAMING
-            </p>
+            <SagarSymbol width={48} height={66} />
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <span style={{
+                fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: '28px',
+                background: 'linear-gradient(135deg, #e50914, #ff3333)',
+                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                letterSpacing: '1px',
+              }}>SAGARVK18</span>
+              <p style={{ color: '#777777', fontSize: '12px', fontFamily: 'Outfit, sans-serif', letterSpacing: '3px', marginTop: '2px', textTransform: 'uppercase' }}>
+                STREAMING
+              </p>
+            </div>
           </motion.div>
         </Link>
 

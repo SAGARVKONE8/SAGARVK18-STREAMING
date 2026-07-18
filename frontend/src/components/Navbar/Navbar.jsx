@@ -7,6 +7,7 @@ import {
 } from 'react-icons/fi'
 import { useAuth } from '../../context/AuthContext'
 import { useProfile } from '../../context/ProfileContext'
+import SagarSymbol from '../UI/SagarSymbol'
 
 const PROFILE_COLORS = ['#e50914', '#f5a623', '#00b4d8', '#7209b7', '#06d6a0', '#fb5607']
 
@@ -99,24 +100,27 @@ const Navbar = () => {
         <Link to="/home" style={{ textDecoration: 'none' }}>
           <motion.div
             whileHover={{ scale: 1.04 }}
-            style={{ display: 'flex', alignItems: 'baseline', gap: '5px' }}
+            style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
           >
-            <span style={{
-              fontFamily: 'Outfit, sans-serif',
-              fontWeight: 900,
-              fontSize:   '22px',
-              background: 'linear-gradient(135deg, #e50914, #f5a623)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              letterSpacing: '1px',
-            }}>SAGARVK18</span>
-            <span style={{
-              fontFamily: 'Outfit, sans-serif',
-              fontWeight: 300,
-              fontSize:   '11px',
-              color:      '#ffffffaa',
-              letterSpacing: '3px',
-            }}>STREAMING</span>
+            <SagarSymbol width={28} height={38} />
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+              <span style={{
+                fontFamily: 'Outfit, sans-serif',
+                fontWeight: 900,
+                fontSize:   '22px',
+                background: 'linear-gradient(135deg, #e50914, #ff3333)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                letterSpacing: '1px',
+              }}>SAGARVK18</span>
+              <span style={{
+                fontFamily: 'Outfit, sans-serif',
+                fontWeight: 300,
+                fontSize:   '11px',
+                color:      '#ffffffaa',
+                letterSpacing: '3px',
+              }}>STREAMING</span>
+            </div>
           </motion.div>
         </Link>
 

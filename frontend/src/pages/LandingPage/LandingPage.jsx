@@ -5,6 +5,7 @@ import {
   FiMonitor, FiSmartphone, FiTablet, FiFilm,
   FiUsers, FiStar, FiCheck, FiArrowRight, FiPlay
 } from 'react-icons/fi'
+import SagarSymbol from '../../components/UI/SagarSymbol'
 
 const PLANS = [
   {
@@ -127,12 +128,15 @@ const LandingPage = () => {
         borderTop: '1px solid rgba(255,255,255,0.08)',
         boxShadow: '0 8px 40px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)',
       }}>
-        <div style={{
-          fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: '22px',
-          background: 'linear-gradient(135deg, #e50914, #f5a623)',
-          WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-          letterSpacing: '1px',
-        }}>SAGARVK18</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <SagarSymbol width={28} height={38} />
+          <div style={{
+            fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: '22px',
+            background: 'linear-gradient(135deg, #e50914, #ff3333)',
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+            letterSpacing: '1px',
+          }}>SAGARVK18</div>
+        </div>
         <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
           <Link to="/login" style={{
             fontFamily: 'Outfit, sans-serif', fontWeight: 500,
@@ -520,13 +524,15 @@ const LandingPage = () => {
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '24px' }}>
             <div>
-              <div style={{
-                fontFamily: 'Outfit, sans-serif', fontWeight: 900,
-                fontSize: '24px',
-                background: 'linear-gradient(135deg, #e50914, #f5a623)',
-                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                marginBottom: '8px',
-              }}>SAGARVK18</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                <SagarSymbol width={28} height={38} />
+                <div style={{
+                  fontFamily: 'Outfit, sans-serif', fontWeight: 900,
+                  fontSize: '24px',
+                  background: 'linear-gradient(135deg, #e50914, #ff3333)',
+                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                }}>SAGARVK18</div>
+              </div>
               <p style={{ color: '#666680', fontSize: '13px', fontFamily: 'Inter, sans-serif' }}>
                 Your premium streaming destination.
               </p>

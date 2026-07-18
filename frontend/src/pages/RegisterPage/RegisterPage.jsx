@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { FiMail, FiLock, FiUser, FiPhone, FiEye, FiEyeOff, FiAlertCircle, FiCheck } from 'react-icons/fi'
 import { useAuth } from '../../context/AuthContext'
 import toast from 'react-hot-toast'
+import SagarSymbol from '../../components/UI/SagarSymbol'
 
 const getPasswordStrength = (pw) => {
   let score = 0
@@ -102,17 +103,23 @@ const RegisterPage = () => {
       >
         {/* Logo */}
         <Link to="/" style={{ textDecoration: 'none' }}>
-          <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-            <span style={{
-              fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: '26px',
-              background: 'linear-gradient(135deg, #e50914, #f5a623)',
-              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-              letterSpacing: '1px',
-            }}>SAGARVK18</span>
-            <p style={{ color: '#666680', fontSize: '11px', fontFamily: 'Outfit, sans-serif', letterSpacing: '3px', marginTop: '4px' }}>
-              STREAMING
-            </p>
-          </div>
+          <motion.div
+            whileHover={{ scale: 1.04 }}
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', marginBottom: '24px' }}
+          >
+            <SagarSymbol width={48} height={66} />
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <span style={{
+                fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: '26px',
+                background: 'linear-gradient(135deg, #e50914, #ff3333)',
+                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                letterSpacing: '1px',
+              }}>SAGARVK18</span>
+              <p style={{ color: '#777777', fontSize: '11px', fontFamily: 'Outfit, sans-serif', letterSpacing: '3px', marginTop: '2px', textTransform: 'uppercase' }}>
+                STREAMING
+              </p>
+            </div>
+          </motion.div>
         </Link>
 
         <h1 style={{

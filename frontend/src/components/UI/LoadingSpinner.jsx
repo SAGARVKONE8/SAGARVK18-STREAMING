@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import SagarSymbol from './SagarSymbol'
 
 const LoadingSpinner = ({ fullScreen = true, size = 'large' }) => {
   const sizeMap = { small: 28, medium: 44, large: 64 }
@@ -52,24 +53,28 @@ const LoadingSpinner = ({ fullScreen = true, size = 'large' }) => {
         <motion.div
           animate={{ opacity: [0.4, 1, 0.4] }}
           transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}
+          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
         >
-          <span style={{
-            fontFamily: 'Outfit, sans-serif',
-            fontWeight: 900,
-            fontSize: '20px',
-            background: 'linear-gradient(135deg, #e50914, #f5a623)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            letterSpacing: '2px',
-          }}>SAGARVK18</span>
-          <span style={{
-            fontFamily: 'Outfit, sans-serif',
-            fontWeight: 300,
-            fontSize: '10px',
-            color: '#666680',
-            letterSpacing: '4px',
-          }}>STREAMING</span>
+          <SagarSymbol width={32} height={44} />
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <span style={{
+              fontFamily: 'Outfit, sans-serif',
+              fontWeight: 900,
+              fontSize: '20px',
+              background: 'linear-gradient(135deg, #e50914, #ff3333)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              letterSpacing: '2px',
+            }}>SAGARVK18</span>
+            <span style={{
+              fontFamily: 'Outfit, sans-serif',
+              fontWeight: 300,
+              fontSize: '10px',
+              color: '#777777',
+              letterSpacing: '4px',
+              marginTop: '2px',
+            }}>STREAMING</span>
+          </div>
         </motion.div>
       )}
     </div>
