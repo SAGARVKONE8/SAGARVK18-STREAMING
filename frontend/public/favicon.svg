@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <!-- Crimson Red Metallic Gradient -->
+    <linearGradient id="metallicRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#ff2d3a" />
+      <stop offset="40%" stopColor="#e50914" />
+      <stop offset="80%" stopColor="#9a0007" />
+      <stop offset="100%" stopColor="#5a0002" />
+    </linearGradient>
+
+    <!-- Premium Gold Metallic Gradient -->
+    <linearGradient id="metallicGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#fff2a3" />
+      <stop offset="30%" stopColor="#ffd700" />
+      <stop offset="70%" stopColor="#d4af37" />
+      <stop offset="100%" stopColor="#8a6d1c" />
+    </linearGradient>
+
+    <!-- Specular Edge Highlights -->
+    <linearGradient id="goldSpec" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+      <stop offset="50%" stopColor="rgba(255,255,255,0.6)" stopOpacity="0.8" />
+      <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+    </linearGradient>
+
+    <!-- Backlight Neon Red Glow Filter -->
+    <filter id="neonBacklight" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="12" result="blur1" />
+      <feGaussianBlur in="SourceAlpha" stdDeviation="24" result="blur2" />
+      <feComponentTransfer in="blur1" result="glow1">
+        <feFuncA type="linear" slope="0.6" />
+      </feComponentTransfer>
+      <feComponentTransfer in="blur2" result="glow2">
+        <feFuncA type="linear" slope="0.3" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="glow2" />
+        <feMergeNode in="glow1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- --- LAYER 1: Neon Backlight Glow Shape --- -->
+  <g filter="url(#neonBacklight)" fill="#e50914">
+    <path d="M100 15 L165 50 L165 130 L100 185 L35 130 L35 50 Z" />
+  </g>
+
+  <!-- --- LAYER 2: Gold Metallic Crest Border (Shield Shape) --- -->
+  <path d="M100 18 L162 52 L162 128 L100 180 L38 128 L38 52 Z" fill="url(#metallicGold)" stroke="#ffd700" strokeWidth="1.5" strokeLinejoin="round" />
+
+  <!-- Specular Highlight Overlay on Gold Border -->
+  <path d="M100 22 L156 54 L156 124 L100 174 L44 124 L44 54 Z" stroke="url(#goldSpec)" strokeWidth="2" fill="none" />
+
+  <!-- Inner Shield Cavity (Occlusion / Dark Glass Underlay) -->
+  <path d="M100 25 L154 55 L154 122 L100 171 L46 122 L46 55 Z" fill="#0a0a0f" fillOpacity="0.88" stroke="url(#metallicRed)" strokeWidth="1" />
+
+  <!-- --- LAYER 3: Stylized Aerodynamic "S" (Crimson Red Core) --- -->
+  <path d="M100 45 C115 45 138 50 138 68 C138 90 100 95 100 105 C100 115 135 110 142 125 C149 140 120 152 100 152 C80 152 62 142 62 128 L80 128 C80 134 94 140 100 140 C108 140 122 135 122 125 C122 110 100 106 100 95 C100 82 122 78 122 68 C122 58 108 55 100 55 C90 55 76 60 76 68 L58 68 C58 50 82 45 100 45 Z" fill="url(#metallicRed)" />
+
+  <!-- Sharp Aerodynamic Wing accents cutting through -->
+  <path d="M62 60 L85 70 L65 78 Z" fill="url(#metallicGold)" />
+  <path d="M138 135 L115 125 L135 117 Z" fill="url(#metallicGold)" />
+
+  <!-- Glowing Core Star Element in Center -->
+  <circle cx="100" cy="97" r="3" fill="#fff" filter="drop-shadow(0 0 6px #ffd700)" />
+</svg>

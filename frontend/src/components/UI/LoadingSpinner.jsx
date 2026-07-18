@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import SagarSymbol from './SagarSymbol'
+
+import BrandSymbol from './BrandSymbol'
 
 const LoadingSpinner = ({ fullScreen = true, size = 'large' }) => {
   const sizeMap = { small: 28, medium: 44, large: 64 }
@@ -9,72 +10,73 @@ const LoadingSpinner = ({ fullScreen = true, size = 'large' }) => {
   const spinner = (
     <div style={{
       display: 'flex', flexDirection: 'column',
-      alignItems: 'center', gap: '22px',
+      alignItems: 'center', gap: '28px',
     }}>
-      {/* Ring container */}
-      <div style={{ position: 'relative', width: s, height: s }}>
-        {/* Outer ring */}
+      {/* Cinematic Logo + Ring Container */}
+      <div style={{
+        position: 'relative',
+        width: s * 1.8,
+        height: s * 1.8,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        {/* Outer glowing orbital ring */}
         <motion.div
           animate={{ rotate: 360 }}
-          transition={{ duration: 1.1, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: 'linear' }}
           style={{
-            position: 'absolute', inset: 0, borderRadius: '50%',
-            border: `${Math.max(2, s / 20)}px solid rgba(229,9,20,0.18)`,
+            position: 'absolute',
+            inset: 0,
+            borderRadius: '50%',
+            border: '2px dashed rgba(229, 9, 20, 0.25)',
             borderTopColor: '#e50914',
+            borderBottomColor: '#ffd700',
           }}
         />
-        {/* Middle ring */}
+        
+        {/* Inner reverse orbital ring */}
         <motion.div
           animate={{ rotate: -360 }}
-          transition={{ duration: 1.7, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 3.5, repeat: Infinity, ease: 'linear' }}
           style={{
             position: 'absolute',
-            inset: `${s * 0.15}px`,
+            inset: '6px',
             borderRadius: '50%',
-            border: `${Math.max(2, s / 24)}px solid rgba(245,166,35,0.18)`,
-            borderTopColor: '#f5a623',
+            border: '1.5px solid rgba(255, 255, 255, 0.05)',
+            borderTopColor: '#ffd700',
+            borderRightColor: '#e50914',
           }}
         />
-        {/* Inner pulsing dot */}
-        <motion.div
-          animate={{ scale: [1, 1.35, 1], opacity: [0.8, 1, 0.8] }}
-          transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
-          style={{
-            position: 'absolute',
-            inset: `${s * 0.38}px`,
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, #e50914, #f5a623)',
-          }}
-        />
+
+        {/* Central glowing Brand Symbol */}
+        <BrandSymbol size={s * 1.15} />
       </div>
 
       {/* Brand text (only on full-screen) */}
       {fullScreen && (
         <motion.div
-          animate={{ opacity: [0.4, 1, 0.4] }}
+          animate={{ opacity: [0.6, 1, 0.6] }}
           transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}
         >
-          <SagarSymbol width={32} height={44} />
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <span style={{
-              fontFamily: 'Outfit, sans-serif',
-              fontWeight: 900,
-              fontSize: '20px',
-              background: 'linear-gradient(135deg, #e50914, #ff3333)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              letterSpacing: '2px',
-            }}>SAGARVK18</span>
-            <span style={{
-              fontFamily: 'Outfit, sans-serif',
-              fontWeight: 300,
-              fontSize: '10px',
-              color: '#777777',
-              letterSpacing: '4px',
-              marginTop: '2px',
-            }}>STREAMING</span>
-          </div>
+          <span style={{
+            fontFamily: 'Outfit, sans-serif',
+            fontWeight: 900,
+            fontSize: '22px',
+            background: 'linear-gradient(135deg, #e50914, #ffd700)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            letterSpacing: '3px',
+            filter: 'drop-shadow(0 4px 12px rgba(229,9,20,0.15))'
+          }}>SAGARVK18</span>
+          <span style={{
+            fontFamily: 'Outfit, sans-serif',
+            fontWeight: 300,
+            fontSize: '10px',
+            color: '#888888',
+            letterSpacing: '5px',
+          }}>STREAMING</span>
         </motion.div>
       )}
     </div>
@@ -85,7 +87,7 @@ const LoadingSpinner = ({ fullScreen = true, size = 'large' }) => {
   return (
     <div style={{
       minHeight: '100vh',
-      background: '#0a0a0f',
+      background: '#050505',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
