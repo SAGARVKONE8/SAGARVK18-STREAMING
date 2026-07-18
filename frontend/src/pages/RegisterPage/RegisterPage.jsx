@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import { FiMail, FiLock, FiUser, FiPhone, FiEye, FiEyeOff, FiAlertCircle, FiCheck } from 'react-icons/fi'
 import { useAuth } from '../../context/AuthContext'
 import toast from 'react-hot-toast'
-import BrandSymbol from '../../components/UI/BrandSymbol'
 
 const getPasswordStrength = (pw) => {
   let score = 0
@@ -16,7 +15,7 @@ const getPasswordStrength = (pw) => {
 }
 
 const strengthLabel  = ['', 'Weak', 'Fair', 'Good', 'Strong']
-const strengthColor  = ['', '#ff8888', '#ff4444', '#e50914', '#9a0007']
+const strengthColor  = ['', '#e50914', '#f5a623', '#00b4d8', '#27ae60']
 
 const RegisterPage = () => {
   const { register, login } = useAuth()
@@ -103,19 +102,16 @@ const RegisterPage = () => {
       >
         {/* Logo */}
         <Link to="/" style={{ textDecoration: 'none' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '32px', gap: '8px' }}>
-            <BrandSymbol size={48} />
-            <div>
-              <span style={{
-                fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: '26px',
-                background: 'linear-gradient(135deg, #e50914, #ffd700)',
-                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                letterSpacing: '1px',
-              }}>SAGARVK18</span>
-              <p style={{ color: '#888888', fontSize: '11px', fontFamily: 'Outfit, sans-serif', letterSpacing: '4px', marginTop: '4px', textAlign: 'center', margin: 0 }}>
-                STREAMING
-              </p>
-            </div>
+          <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+            <img
+              src="/logo.jpg"
+              alt="SAGARVK18"
+              style={{
+                height: '46px',
+                borderRadius: '8px',
+                objectFit: 'contain',
+              }}
+            />
           </div>
         </Link>
 

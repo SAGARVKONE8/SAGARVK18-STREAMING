@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import { FiMail, FiLock, FiEye, FiEyeOff, FiAlertCircle } from 'react-icons/fi'
 import { useAuth } from '../../context/AuthContext'
 import toast from 'react-hot-toast'
-import BrandSymbol from '../../components/UI/BrandSymbol'
 
 const LoginPage = () => {
   const { login } = useAuth()
@@ -79,20 +78,17 @@ const LoginPage = () => {
         <Link to="/" style={{ textDecoration: 'none' }}>
           <motion.div
             whileHover={{ scale: 1.04 }}
-            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '32px', gap: '8px' }}
+            style={{ textAlign: 'center', marginBottom: '32px' }}
           >
-            <BrandSymbol size={48} />
-            <div>
-              <span style={{
-                fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: '28px',
-                background: 'linear-gradient(135deg, #e50914, #ffd700)',
-                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                letterSpacing: '1px',
-              }}>SAGARVK18</span>
-              <p style={{ color: '#888888', fontSize: '11px', fontFamily: 'Outfit, sans-serif', letterSpacing: '4px', marginTop: '4px', textAlign: 'center', margin: 0 }}>
-                STREAMING
-              </p>
-            </div>
+            <img
+              src="/logo.jpg"
+              alt="SAGARVK18"
+              style={{
+                height: '46px',
+                borderRadius: '8px',
+                objectFit: 'contain',
+              }}
+            />
           </motion.div>
         </Link>
 

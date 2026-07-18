@@ -8,8 +8,6 @@ import {
 import { useAuth } from '../../context/AuthContext'
 import { useProfile } from '../../context/ProfileContext'
 
-import BrandSymbol from '../UI/BrandSymbol'
-
 const PROFILE_COLORS = ['#e50914', '#f5a623', '#00b4d8', '#7209b7', '#06d6a0', '#fb5607']
 
 const Navbar = () => {
@@ -101,27 +99,17 @@ const Navbar = () => {
         <Link to="/home" style={{ textDecoration: 'none' }}>
           <motion.div
             whileHover={{ scale: 1.04 }}
-            style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+            style={{ display: 'flex', alignItems: 'center' }}
           >
-            <BrandSymbol size={32} animate={false} />
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-              <span style={{
-                fontFamily: 'Outfit, sans-serif',
-                fontWeight: 900,
-                fontSize:   '22px',
-                background: 'linear-gradient(135deg, #e50914, #ffd700)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                letterSpacing: '1px',
-              }}>SAGARVK18</span>
-              <span style={{
-                fontFamily: 'Outfit, sans-serif',
-                fontWeight: 300,
-                fontSize:   '10px',
-                color:      '#888888',
-                letterSpacing: '3px',
-              }}>STREAMING</span>
-            </div>
+            <img
+              src="/logo.jpg"
+              alt="SAGARVK18"
+              style={{
+                height: '42px',
+                borderRadius: '8px',
+                objectFit: 'contain',
+              }}
+            />
           </motion.div>
         </Link>
 
