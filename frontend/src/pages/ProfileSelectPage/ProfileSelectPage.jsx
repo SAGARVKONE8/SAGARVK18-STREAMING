@@ -8,12 +8,12 @@ import { createProfile, deleteProfile } from '../../api/userApi'
 import toast from 'react-hot-toast'
 
 const AVATAR_COLORS = [
-  { bg: 'linear-gradient(135deg, #e50914, #c80000)', label: 'Red' },
-  { bg: 'linear-gradient(135deg, #f5a623, #e8960e)', label: 'Gold' },
-  { bg: 'linear-gradient(135deg, #00b4d8, #0096b7)', label: 'Blue' },
-  { bg: 'linear-gradient(135deg, #7209b7, #560bad)', label: 'Purple' },
-  { bg: 'linear-gradient(135deg, #06d6a0, #04b084)', label: 'Green' },
-  { bg: 'linear-gradient(135deg, #fb5607, #d44e06)', label: 'Orange' },
+  { bg: 'linear-gradient(135deg, #e50914, #9a0007)', label: 'Crimson' },
+  { bg: 'linear-gradient(135deg, #b71c1c, #5f0909)', label: 'Dark Red' },
+  { bg: 'linear-gradient(135deg, #ff1744, #b2002d)', label: 'Ruby Red' },
+  { bg: 'linear-gradient(135deg, #333333, #111111)', label: 'Dark Grey' },
+  { bg: 'linear-gradient(135deg, #ff5252, #c50000)', label: 'Coral Red' },
+  { bg: 'linear-gradient(135deg, #880e4f, #4a0022)', label: 'Burgundy' },
 ]
 
 const ProfileCard = ({ profile, onSelect, onDelete, editMode }) => {

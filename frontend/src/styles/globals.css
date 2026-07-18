@@ -32,41 +32,41 @@ input, textarea, select { font-family: inherit; }
 /* ---------- Design Tokens ---------- */
 :root {
   /* Colors */
-  --bg-primary:    #080810;
-  --bg-secondary:  #12122a;
-  --bg-card:       #0e0e1c;
-  --bg-elevated:   #14142c;
-  --bg-overlay:    rgba(8, 8, 16, 0.85);
+  --bg-primary:    #050505;
+  --bg-secondary:  #141414;
+  --bg-card:       #181818;
+  --bg-elevated:   #222222;
+  --bg-overlay:    rgba(0, 0, 0, 0.85);
 
   --accent-red:    #e50914;
-  --accent-red-hover: #ff1a26;
-  --accent-gold:   #f5a623;
-  --accent-gold-hover: #ffb940;
+  --accent-red-hover: #ff1f2f;
+  --accent-gold:   #ff3333;
+  --accent-gold-hover: #ff5555;
 
-  --text-primary:   #f0f0fa;
-  --text-secondary: #a0a0c0;
-  --text-muted:     #5a5a80;
-  --text-disabled:  #2e2e4a;
+  --text-primary:   #ffffff;
+  --text-secondary: #e5e5e5;
+  --text-muted:     #777777;
+  --text-disabled:  #333333;
 
-  --border-color:   rgba(255, 255, 255, 0.06);
-  --border-hover:   rgba(255, 255, 255, 0.15);
+  --border-color:   rgba(255, 255, 255, 0.05);
+  --border-hover:   rgba(229, 9, 20, 0.25);
 
   /* Liquid Glass */
-  --glass-bg:         rgba(255, 255, 255, 0.04);
-  --glass-bg-dense:   rgba(15, 15, 30, 0.6);
-  --glass-border:     rgba(255, 255, 255, 0.08);
-  --glass-highlight:  rgba(255, 255, 255, 0.12);
+  --glass-bg:         rgba(20, 20, 20, 0.45);
+  --glass-bg-dense:   rgba(10, 10, 10, 0.85);
+  --glass-border:     rgba(229, 9, 20, 0.15);
+  --glass-highlight:  rgba(255, 255, 255, 0.08);
   --glass-blur:       blur(40px);
   --glass-blur-light: blur(24px);
-  --glass-saturate:   saturate(180%);
+  --glass-saturate:   saturate(160%);
 
   /* Shadows — Soft multi-layer */
-  --shadow-sm:        0 2px 8px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.15);
-  --shadow-md:        0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
-  --shadow-lg:        0 24px 80px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.25);
-  --shadow-glow-red:  0 0 40px rgba(229, 9, 20, 0.25), 0 0 80px rgba(229, 9, 20, 0.1);
-  --shadow-glow-gold: 0 0 40px rgba(245, 166, 35, 0.25), 0 0 80px rgba(245, 166, 35, 0.1);
-  --shadow-glass:     0 8px 40px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --shadow-sm:        0 2px 8px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md:        0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-lg:        0 24px 80px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow-red:  0 0 40px rgba(229, 9, 20, 0.3), 0 0 80px rgba(229, 9, 20, 0.15);
+  --shadow-glow-gold: 0 0 40px rgba(229, 9, 20, 0.2), 0 0 80px rgba(229, 9, 20, 0.1);
+  --shadow-glass:     0 8px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.04);
 
   /* Transitions — Liquid spring easing */
   --ease-liquid:       cubic-bezier(0.22, 1, 0.36, 1);
@@ -106,11 +106,11 @@ input, textarea, select { font-family: inherit; }
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(229, 9, 20, 0.3);
   border-radius: var(--radius-full);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(229, 9, 20, 0.7);
 }
 
 /* ---------- Liquid Glass Materials ---------- */
@@ -133,7 +133,7 @@ input, textarea, select { font-family: inherit; }
 }
 
 .liquid-glass-card {
-  background: rgba(18, 18, 40, 0.45);
+  background: rgba(20, 20, 20, 0.45);
   backdrop-filter: var(--glass-blur-light) var(--glass-saturate);
   -webkit-backdrop-filter: var(--glass-blur-light) var(--glass-saturate);
   border: 1px solid var(--glass-border);
@@ -143,13 +143,13 @@ input, textarea, select { font-family: inherit; }
   transition: var(--transition-smooth);
 }
 .liquid-glass-card:hover {
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: var(--shadow-md), 0 0 60px rgba(229, 9, 20, 0.06);
+  border-color: rgba(229, 9, 20, 0.35);
+  box-shadow: var(--shadow-md), 0 0 60px rgba(229, 9, 20, 0.12);
 }
 
 /* Legacy glass classes — kept for compatibility */
 .glass {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(20, 20, 20, 0.3);
   backdrop-filter: var(--glass-blur) var(--glass-saturate);
   -webkit-backdrop-filter: var(--glass-blur) var(--glass-saturate);
   border: 1px solid var(--glass-border);
@@ -163,7 +163,7 @@ input, textarea, select { font-family: inherit; }
   border-top-color: var(--glass-highlight);
 }
 .glass-card {
-  background: rgba(18, 18, 40, 0.45);
+  background: rgba(20, 20, 20, 0.45);
   backdrop-filter: var(--glass-blur-light) var(--glass-saturate);
   -webkit-backdrop-filter: var(--glass-blur-light) var(--glass-saturate);
   border: 1px solid var(--glass-border);

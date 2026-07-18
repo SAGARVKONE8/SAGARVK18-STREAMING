@@ -16,15 +16,15 @@ import toast from 'react-hot-toast'
 
 const PLANS = [
   {
-    id: 'FREE',    dbId: 1, name: 'Free',     price: '₹0',   color: '#27ae60',
+    id: 'FREE',    dbId: 1, name: 'Free',     price: '₹0',   color: '#888888',
     features: ['720p HD', '2 Screens', 'Ad-supported'],
   },
   {
-    id: 'BASIC',   dbId: 2, name: 'Basic',    price: '₹149', color: '#00b4d8',
+    id: 'BASIC',   dbId: 2, name: 'Basic',    price: '₹149', color: '#ff6b6b',
     features: ['1080p Full HD', '2 Screens', 'Ad-free'],
   },
   {
-    id: 'STANDARD',dbId: 3, name: 'Standard', price: '₹349', color: '#f5a623',
+    id: 'STANDARD',dbId: 3, name: 'Standard', price: '₹349', color: '#ff3333',
     features: ['1080p Full HD', '4 Screens', 'Early Access'],
     popular: true,
   },

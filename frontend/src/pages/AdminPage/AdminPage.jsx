@@ -129,9 +129,9 @@ export default function AdminPage() {
 
   const stats = [
     { label: 'Total Content', value: contents.length, icon: <FiFilm />, color: '#e50914' },
-    { label: 'Movies', value: contents.filter(c => c.type === 'MOVIE').length, icon: <MdMovieFilter />, color: '#f5a623' },
-    { label: 'Series', value: contents.filter(c => c.type === 'SERIES').length, icon: <MdLiveTv />, color: '#6c63ff' },
-    { label: 'Total Users', value: users.length, icon: <FiUsers />, color: '#00d4aa' },
+    { label: 'Movies', value: contents.filter(c => c.type === 'MOVIE').length, icon: <MdMovieFilter />, color: '#ff3333' },
+    { label: 'Series', value: contents.filter(c => c.type === 'SERIES').length, icon: <MdLiveTv />, color: '#ff6b6b' },
+    { label: 'Total Users', value: users.length, icon: <FiUsers />, color: '#888888' },
   ];
 
   return (
