@@ -4,18 +4,13 @@ const getBaseURL = () => {
   if (import.meta.env.VITE_API_BASE_URL) {
     return import.meta.env.VITE_API_BASE_URL
   }
-  if (typeof window !== 'undefined') {
-    const hostname = window.location.hostname
-    if (hostname === 'localhost' || hostname === '127.0.0.1') {
-      return '/api'
-    }
-  }
   return 'https://sagarvk18-streaming.onrender.com/api'
 }
 
 const API = axios.create({
   baseURL: getBaseURL(),
-  headers: { 'Content-Type': 'application/json' }
+  headers: { 'Content-Type': 'application/json' },
+  timeout: 60000 // 60s timeout to accommodate Render free tier cold starts
 })
 
 API.interceptors.request.use((config) => {
