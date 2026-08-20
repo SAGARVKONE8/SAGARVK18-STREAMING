@@ -1,0 +1,30 @@
+services:
+  # Spring Boot Backend Web Service
+  - type: web
+    name: streaming-backend
+    env: docker
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:postgresql://streaming-db:5432/sagarvk18_streaming
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: streaming-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: streaming-db
+          property: password
+      - key: JWT_SECRET
+        generateValue: true
+
+databases:
+  # PostgreSQL Database for Spring Boot
+  - name: streaming-db
+    databaseName: sagarvk18_streaming
+    plan: free
+    user: sagarvk18_user

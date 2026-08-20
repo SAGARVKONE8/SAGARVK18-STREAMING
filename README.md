@@ -110,6 +110,18 @@ The backend contains a multi-stage Dockerfile for containerized deployment.
 
 ---
 
+## 🌐 Deploying Backend on Render
+
+This repository includes a `render.yaml` Blueprint for automated 1-click deployment on **Render**:
+
+1. Push this repository to **GitHub** / **GitLab**.
+2. Go to your [Render Dashboard](https://dashboard.render.com).
+3. Click **New +** $\rightarrow$ **Blueprint**.
+4. Connect this repository. Render will automatically detect `render.yaml` and set up both the **Spring Boot Web Service** (via Docker) and the **PostgreSQL Database**.
+5. Click **Apply**.
+
+---
+
 ## 📂 Project Structure
 
 ```text
