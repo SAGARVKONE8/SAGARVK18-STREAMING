@@ -1,5 +1,5 @@
 services:
-  # Spring Boot Backend Web Service
+  # Single Web Service for Spring Boot Backend (using MySQL)
   - type: web
     name: streaming-backend
     env: docker
@@ -10,21 +10,10 @@ services:
       - key: PORT
         value: 8080
       - key: SPRING_DATASOURCE_URL
-        value: jdbc:postgresql://streaming-db:5432/sagarvk18_streaming
+        sync: false
       - key: SPRING_DATASOURCE_USERNAME
-        fromDatabase:
-          name: streaming-db
-          property: user
+        sync: false
       - key: SPRING_DATASOURCE_PASSWORD
-        fromDatabase:
-          name: streaming-db
-          property: password
+        sync: false
       - key: JWT_SECRET
         generateValue: true
-
-databases:
-  # PostgreSQL Database for Spring Boot
-  - name: streaming-db
-    databaseName: sagarvk18_streaming
-    plan: free
-    user: sagarvk18_user
